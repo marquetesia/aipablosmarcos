@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Instagram, Youtube, Home, Car, Cpu, ArrowRight } from "lucide-react"
 import { useRouter } from "next/navigation"
+import Reviews from "@/components/Reviews"
 
 export default function MainLanding() {
   const router = useRouter();
@@ -161,6 +162,9 @@ export default function MainLanding() {
             </Button>
           </div>
         </section>
+
+        {/* Reviews Section */}
+        <Reviews />
 
         {/* Footer */}
         <footer className="container mx-auto px-4 py-8 border-t border-slate-800">
