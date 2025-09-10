@@ -8,12 +8,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Brain, CalendarIcon, Clock } from "lucide-react";
+import { CalendarIcon, Clock, ArrowRight } from "lucide-react";
 // @ts-ignore - Firebase db may be null during build
 import { db } from "@/lib/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import NavPill from "@/components/NavPill";
 
 export default function BookingPage() {
   const router = useRouter();
@@ -62,61 +63,52 @@ export default function BookingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-      </div>
-
-      <div className="relative z-10">
-        {/* Header */}
-        <header className="container mx-auto px-4 py-6">
-          <nav className="flex justify-between items-center">
-            <div className="flex items-center space-x-2 cursor-pointer" onClick={() => router.push("/")}>
-              <Brain className="h-8 w-8 text-cyan-400" />
-              <span className="text-xl font-bold text-white">AI Consulting</span>
+    <div className="min-h-screen flex flex-col overflow-x-hidden bg-background">
+      <NavPill />
+      
+      <main className="flex-grow pt-24 overflow-x-hidden w-full">
+        {/* Hero Section */}
+        <section className="bg-background py-16">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="text-center mb-12">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
+                <span className="text-brand-purple">Agenda tu </span>
+                <span>llamada gratuita</span>
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Reserva tu consultoría personalizada y descubre cómo podemos transformar tu negocio
+              </p>
             </div>
-          </nav>
-        </header>
 
-        <div className="container mx-auto px-4 py-6 md:py-8 max-w-4xl">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white text-center mb-6 md:mb-8 px-2">
-            Agenda tu llamada gratuita
-          </h1>
-
-          <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
-            {/* Date and Time Selection */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-              <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
-                <CardHeader className="pb-4 md:pb-6">
-                  <CardTitle className="text-white flex items-center gap-2 text-lg md:text-xl">
-                    <CalendarIcon className="h-4 w-4 md:h-5 md:w-5 text-cyan-400" />
-                    Selecciona una fecha
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Date and Time Selection */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="card p-6">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded-lg bg-brand-purple/10 text-brand-purple flex items-center justify-center">
+                      <CalendarIcon className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground">Selecciona una fecha</h3>
+                  </div>
                   <Calendar
                     mode="single"
                     selected={date}
                     onSelect={setDate}
                     disabled={(date) => date < new Date() || date.getDay() === 0 || date.getDay() === 6}
-                    className="rounded-md border-slate-700 text-white"
+                    className="rounded-md border-border [&]:text-foreground [&_*]:text-foreground [&_.rdp-caption_label]:text-foreground [&_.rdp-caption_label]:font-semibold [&_.rdp-nav_button]:text-foreground [&_.rdp-weekday]:text-muted-foreground [&_.rdp-weekday]:font-medium [&_.rdp-day_selected]:bg-brand-purple [&_.rdp-day_selected]:text-white [&_.rdp-day_today]:bg-accent [&_.rdp-day_today]:text-accent-foreground [&_.rdp-day:hover]:bg-accent [&_.rdp-day:hover]:text-accent-foreground [&_.rdp-day_disabled]:text-muted-foreground [&_.rdp-day_disabled]:opacity-50"
                     showOutsideDays={false}
                   />
-                </CardContent>
-              </Card>
+                </div>
 
-              <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
-                <CardHeader className="pb-4 md:pb-6">
-                  <CardTitle className="text-white flex items-center gap-2 text-lg md:text-xl">
-                    <Clock className="h-4 w-4 md:h-5 md:w-5 text-cyan-400" />
-                    Selecciona una hora
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
+                <div className="card p-6">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
+                      <Clock className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground">Selecciona una hora</h3>
+                  </div>
                   <Select value={formData.time} onValueChange={(value) => setFormData({...formData, time: value})}>
-                    <SelectTrigger className="bg-slate-700 border-slate-600 text-white">
+                    <SelectTrigger className="h-12">
                       <SelectValue placeholder="Elige una hora" />
                     </SelectTrigger>
                     <SelectContent>
@@ -127,129 +119,142 @@ export default function BookingPage() {
                       ))}
                     </SelectContent>
                   </Select>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Form Fields */}
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
-              <CardHeader className="pb-4 md:pb-6">
-                <CardTitle className="text-white text-lg md:text-xl">Información de contacto</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4 md:space-y-6">
-                <div>
-                  <Label htmlFor="nombre" className="text-gray-300">1. Nombre completo</Label>
-                  <p className="text-sm text-gray-400 mb-2">Para personalizar mensajes y llamadas</p>
-                  <Input
-                    id="nombre"
-                    required
-                    value={formData.nombre}
-                    onChange={(e) => setFormData({...formData, nombre: e.target.value})}
-                    className="bg-slate-700 border-slate-600 text-white"
-                  />
                 </div>
+              </div>
 
-                <div>
-                  <Label htmlFor="email" className="text-gray-300">2. Correo electrónico</Label>
-                  <p className="text-sm text-gray-400 mb-2">Para seguimiento y envío de info</p>
-                  <Input
-                    id="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="bg-slate-700 border-slate-600 text-white"
-                  />
+              {/* Form Fields */}
+              <div className="card p-8">
+                <h3 className="text-2xl font-bold text-foreground mb-6">Información de contacto</h3>
+                
+                <div className="space-y-6">
+                  <div>
+                    <Label htmlFor="nombre" className="text-foreground font-medium">1. Nombre completo</Label>
+                    <p className="text-sm text-muted-foreground mb-3">Para personalizar mensajes y llamadas</p>
+                    <Input
+                      id="nombre"
+                      required
+                      value={formData.nombre}
+                      onChange={(e) => setFormData({...formData, nombre: e.target.value})}
+                      className="h-12"
+                      placeholder="Tu nombre completo"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="email" className="text-foreground font-medium">2. Correo electrónico</Label>
+                    <p className="text-sm text-muted-foreground mb-3">Para seguimiento y envío de información</p>
+                    <Input
+                      id="email"
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      className="h-12"
+                      placeholder="tu@email.com"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="telefono" className="text-foreground font-medium">3. Teléfono (con WhatsApp)</Label>
+                    <p className="text-sm text-muted-foreground mb-3">✅ Muy importante para cerrar por llamada o nota de voz</p>
+                    <Input
+                      id="telefono"
+                      type="tel"
+                      required
+                      value={formData.telefono}
+                      onChange={(e) => setFormData({...formData, telefono: e.target.value})}
+                      className="h-12"
+                      placeholder="+34 600 000 000"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="servicio" className="text-foreground font-medium">4. Selecciona el servicio que te interesa</Label>
+                    <Select required value={formData.servicio} onValueChange={(value) => setFormData({...formData, servicio: value})}>
+                      <SelectTrigger className="h-12 mt-3">
+                        <SelectValue placeholder="Elige un servicio" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="asesoria-inmobiliaria">Asesoría inmobiliaria</SelectItem>
+                        <SelectItem value="carsharing">Carsharing y rentabilidad de coches</SelectItem>
+                        <SelectItem value="automatizacion-ia">Automatización con IA para tu negocio</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="objetivo" className="text-foreground font-medium">5. ¿Qué objetivo quieres alcanzar?</Label>
+                    <p className="text-sm text-muted-foreground mb-3">Ejemplo: "Quiero empezar a invertir en propiedades con poco capital"</p>
+                    <Textarea
+                      id="objetivo"
+                      required
+                      value={formData.objetivo}
+                      onChange={(e) => setFormData({...formData, objetivo: e.target.value})}
+                      rows={4}
+                      placeholder="Describe tu objetivo principal..."
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="experiencia" className="text-foreground font-medium">6. ¿Tienes alguna experiencia previa en este ámbito? (opcional)</Label>
+                    <p className="text-sm text-muted-foreground mb-3">✅ Esto ayuda a adaptar la consultoría a tu nivel</p>
+                    <Textarea
+                      id="experiencia"
+                      value={formData.experiencia}
+                      onChange={(e) => setFormData({...formData, experiencia: e.target.value})}
+                      rows={3}
+                      placeholder="Describe tu experiencia previa..."
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="ciudad" className="text-foreground font-medium">7. ¿En qué ciudad vives? (para carsharing o inmobiliaria)</Label>
+                    <Input
+                      id="ciudad"
+                      value={formData.ciudad}
+                      onChange={(e) => setFormData({...formData, ciudad: e.target.value})}
+                      className="h-12 mt-3"
+                      placeholder="Madrid, Barcelona, Valencia..."
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="presupuesto" className="text-foreground font-medium">8. ¿Cuál es tu presupuesto aproximado para iniciar?</Label>
+                    <Select required value={formData.presupuesto} onValueChange={(value) => setFormData({...formData, presupuesto: value})}>
+                      <SelectTrigger className="h-12 mt-3">
+                        <SelectValue placeholder="Selecciona un rango" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="menos-500">Menos de 500 €</SelectItem>
+                        <SelectItem value="500-1000">500 – 1.000 €</SelectItem>
+                        <SelectItem value="1000-5000">1.000–5.000 €</SelectItem>
+                        <SelectItem value="mas-5000">Más de 5.000 €</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    className="w-full h-14 bg-brand-purple hover:bg-brand-purple/90 text-white font-semibold text-lg group"
+                  >
+                    Confirmar reserva
+                    <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
                 </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
 
-                <div>
-                  <Label htmlFor="telefono" className="text-gray-300">3. Teléfono (con WhatsApp)</Label>
-                  <p className="text-sm text-gray-400 mb-2">✅ Muy importante para cerrar por llamada o nota de voz</p>
-                  <Input
-                    id="telefono"
-                    type="tel"
-                    required
-                    value={formData.telefono}
-                    onChange={(e) => setFormData({...formData, telefono: e.target.value})}
-                    className="bg-slate-700 border-slate-600 text-white"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="servicio" className="text-gray-300">4. Selecciona el servicio que te interesa</Label>
-                  <Select required value={formData.servicio} onValueChange={(value) => setFormData({...formData, servicio: value})}>
-                    <SelectTrigger className="bg-slate-700 border-slate-600 text-white mt-2">
-                      <SelectValue placeholder="Elige un servicio" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="asesoria-inmobiliaria">Asesoría inmobiliaria</SelectItem>
-                      <SelectItem value="carsharing">Carsharing y rentabilidad de coches</SelectItem>
-                      <SelectItem value="automatizacion-ia">Automatización con IA para tu negocio</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <Label htmlFor="objetivo" className="text-gray-300">5. ¿Qué objetivo quieres alcanzar?</Label>
-                  <p className="text-sm text-gray-400 mb-2">Ejemplo: "Quiero empezar a invertir en propiedades con poco capital"</p>
-                  <Textarea
-                    id="objetivo"
-                    required
-                    value={formData.objetivo}
-                    onChange={(e) => setFormData({...formData, objetivo: e.target.value})}
-                    className="bg-slate-700 border-slate-600 text-white"
-                    rows={3}
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="experiencia" className="text-gray-300">6. ¿Tienes alguna experiencia previa en este ámbito? (opcional)</Label>
-                  <p className="text-sm text-gray-400 mb-2">✅ Esto te ayuda a adaptar tu pitch de venta</p>
-                  <Textarea
-                    id="experiencia"
-                    value={formData.experiencia}
-                    onChange={(e) => setFormData({...formData, experiencia: e.target.value})}
-                    className="bg-slate-700 border-slate-600 text-white"
-                    rows={2}
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="ciudad" className="text-gray-300">7. ¿En qué ciudad vives? (para carsharing o inmobiliaria)</Label>
-                  <Input
-                    id="ciudad"
-                    value={formData.ciudad}
-                    onChange={(e) => setFormData({...formData, ciudad: e.target.value})}
-                    className="bg-slate-700 border-slate-600 text-white mt-2"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="presupuesto" className="text-gray-300">8. ¿Cuál es tu presupuesto aproximado para iniciar?</Label>
-                  <Select required value={formData.presupuesto} onValueChange={(value) => setFormData({...formData, presupuesto: value})}>
-                    <SelectTrigger className="bg-slate-700 border-slate-600 text-white mt-2">
-                      <SelectValue placeholder="Selecciona un rango" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="menos-500">Menos de 500 €</SelectItem>
-                      <SelectItem value="500-1000">500 – 1.000 €</SelectItem>
-                      <SelectItem value="1000-5000">1.000–5.000 €</SelectItem>
-                      <SelectItem value="mas-5000">Más de 5.000 €</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white font-semibold py-3 text-lg"
-                >
-                  Confirmar reserva
-                </Button>
-              </CardContent>
-            </Card>
-          </form>
+      {/* Footer */}
+      <footer className="border-t border-border mt-12 pt-6">
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center text-muted-foreground">
+            <p>&copy; 2024 Pablos Marcos. Todos los derechos reservados.</p>
+          </div>
         </div>
-      </div>
+      </footer>
     </div>
   );
 } 
