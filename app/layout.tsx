@@ -3,9 +3,14 @@ import './globals.css'
 import { Toaster } from 'sonner'
 
 export const metadata: Metadata = {
-  title: 'PablosMarcos',
-  description: 'Consultoría en IA, asesoría inmobiliaria y carsharing con Pablo Marcos',
+  title: 'Pablos Marcos',
+  description: 'Consultoría en IA, asesoría inmobiliaria y carsharing con Pablos Marcos',
   generator: 'Next.js',
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
 }
 
 export default function RootLayout({
