@@ -9,37 +9,7 @@ import NavPill from "@/components/NavPill"
 
 export default function ServiciosPage() {
   const router = useRouter();
-  const [showROAResult, setShowROAResult] = useState(false);
-  const [roaData, setROAData] = useState({
-    timeHours: '',
-    frequency: '',
-    months: '',
-    hourlyRate: '',
-    setupCost: '',
-    monthlyCost: ''
-  });
 
-  const calculateROA = () => {
-    const timeHours = parseFloat(roaData.timeHours) || 0;
-    const frequency = parseFloat(roaData.frequency) || 0;
-    const months = parseFloat(roaData.months) || 0;
-    const hourlyRate = parseFloat(roaData.hourlyRate) || 0;
-    const setupCost = parseFloat(roaData.setupCost) || 0;
-    const monthlyCost = parseFloat(roaData.monthlyCost) || 0;
-
-    const totalTimeHours = timeHours * frequency * months;
-    const totalSavings = totalTimeHours * hourlyRate;
-    const totalCost = setupCost + (monthlyCost * months);
-    const roa = totalSavings - totalCost;
-
-    setROAData(prev => ({
-      ...prev,
-      calculatedROA: roa,
-      calculatedTimeHours: totalTimeHours,
-      calculatedSavings: totalSavings
-    }));
-    setShowROAResult(true);
-  };
   
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
@@ -54,13 +24,9 @@ export default function ServiciosPage() {
                 Trae la idea. La convertimos en un sistema real.
               </h1>
               <p className="mt-4 text-lg text-muted-foreground">
-                No estás limitado a 4 automatizaciones. <b>Podemos construir lo que tengas en la cabeza</b>. 
-                Aquí verás 4 ejemplos en vídeo (90s) y <a href="#proceso" className="text-brand-purple font-semibold hover:underline">nuestro proceso</a>: Auditoría → Boceto → Construcción → Mejora continua.
+                <b>Podemos construir lo que tengas en la cabeza</b>. 
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Button className="bg-brand-purple text-white font-semibold rounded-xl hover:bg-brand-purple/90 shadow-lg h-10 px-5">
-                  Ver los 4 vídeos
-                </Button>
                 <Button className="btn-outline border font-semibold rounded-xl hover:bg-secondary h-10 px-5" onClick={() => router.push('/booking')}>
                   Hablar conmigo
                 </Button>
@@ -73,18 +39,47 @@ export default function ServiciosPage() {
         <section id="demos" className="bg-secondary py-14">
           <div className="container mx-auto px-4">
             <div className="flex items-end justify-between gap-6 mb-6">
-              <h2 className="text-2xl md:text-3xl font-extrabold text-foreground">Ejemplos en 90 segundos</h2>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-foreground">Ejemplos</h2>
               <Button className="btn-outline border font-semibold rounded-xl hover:bg-accent hidden md:inline-flex h-10 px-4 py-2 text-sm" onClick={() => router.push('/booking')}>
                 Contactar
               </Button>
             </div>
-            <p className="mt-2 text-muted-foreground mb-6">
-              Estos 4 vídeos son <b>ejemplos</b>. No son límites: si puedes explicarlo, podemos automatizarlo.
-            </p>
+
             
             <div className="space-y-12">
-              {/* App Interna */}
+              {/* Desarrollo Web */}
               <div className="flex flex-col md:flex-row items-stretch gap-8">
+                <div className="w-full md:w-1/3 flex flex-col">
+                  <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mb-4">
+                    <Zap className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">Desarrollo de webs modernas</h3>
+                  <p className="text-muted-foreground flex-grow">
+                    Webs rápidas, responsive y optimizadas para conversión. Desde landing pages hasta plataformas complejas con bases de datos.
+                  </p>
+                </div>
+                <div className="w-full md:w-2/3 flex">
+                  <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-lg flex items-center w-full">
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <span className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></span>
+                        <span><strong>Qué hace:</strong> desarrollo completo desde diseño hasta deploy.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></span>
+                        <span><strong>Problema que quita:</strong> webs lentas, no responsive o difíciles de mantener.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></span>
+                        <span><strong>Resultado:</strong> web profesional que convierte y es fácil de actualizar.</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* App Interna */}
+              <div className="flex flex-col md:flex-row-reverse items-stretch gap-8">
                 <div className="w-full md:w-1/3 flex flex-col">
                   <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-4">
                     <Brain className="w-8 h-8 text-white" />
@@ -115,7 +110,7 @@ export default function ServiciosPage() {
               </div>
 
               {/* Resúmenes Automáticos */}
-              <div className="flex flex-col md:flex-row-reverse items-stretch gap-8">
+              <div className="flex flex-col md:flex-row items-stretch gap-8">
                 <div className="w-full md:w-1/3 flex flex-col">
                   <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mb-4">
                     <Sparkles className="w-8 h-8 text-white" />
@@ -146,7 +141,7 @@ export default function ServiciosPage() {
               </div>
 
               {/* Wiki con Chatbot */}
-              <div className="flex flex-col md:flex-row items-stretch gap-8">
+              <div className="flex flex-col md:flex-row-reverse items-stretch gap-8">
                 <div className="w-full md:w-1/3 flex flex-col">
                   <div className="w-16 h-16 bg-brand-purple rounded-full flex items-center justify-center mb-4">
                     <Brain className="w-8 h-8 text-white" />
@@ -177,7 +172,7 @@ export default function ServiciosPage() {
               </div>
 
               {/* Precalificación Dinámica */}
-              <div className="flex flex-col md:flex-row-reverse items-stretch gap-8">
+              <div className="flex flex-col md:flex-row items-stretch gap-8">
                 <div className="w-full md:w-1/3 flex flex-col">
                   <div className="w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center mb-4">
                     <Zap className="w-8 h-8 text-white" />
@@ -263,110 +258,6 @@ export default function ServiciosPage() {
           </div>
         </section>
 
-        {/* ROA Calculator Section */}
-        <section id="roa" className="bg-secondary py-14">
-          <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-foreground">Calcula el ROA (Return On Automation)</h2>
-            <div className="mt-2 text-muted-foreground">
-              <p><b>ROA en tiempo</b> = Tiempo manual × Frecuencia × Meses</p>
-              <p><b>Ahorro monetario</b> = ROA en tiempo × Sueldo por hora bruto</p>
-              <p><b>ROA</b> = Ahorro monetario − (Coste de montarlo + Coste mensual × Meses)</p>
-              <p className="mt-1 text-sm">Automatiza cuando <b>ROA &gt; 0</b>.</p>
-            </div>
-            
-            <div className="mt-6">
-              <div className="card p-5 border bg-white max-w-2xl mx-auto">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="font-medium text-sm">Tiempo manual por ejecución (h)</label>
-                    <input 
-                      type="number" 
-                      className="flex h-10 w-full border bg-background text-base rounded-lg p-2 mt-1" 
-                      step="0.1" 
-                      placeholder="1.5"
-                      value={roaData.timeHours}
-                      onChange={(e) => setROAData(prev => ({...prev, timeHours: e.target.value}))}
-                    />
-                  </div>
-                  <div>
-                    <label className="font-medium text-sm">Frecuencia (veces/mes)</label>
-                    <input 
-                      type="number" 
-                      className="flex h-10 w-full border bg-background text-base rounded-lg p-2 mt-1" 
-                      placeholder="60"
-                      value={roaData.frequency}
-                      onChange={(e) => setROAData(prev => ({...prev, frequency: e.target.value}))}
-                    />
-                  </div>
-                  <div>
-                    <label className="font-medium text-sm">Meses (horizonte)</label>
-                    <input 
-                      type="number" 
-                      className="flex h-10 w-full border bg-background text-base rounded-lg p-2 mt-1" 
-                      placeholder="3"
-                      value={roaData.months}
-                      onChange={(e) => setROAData(prev => ({...prev, months: e.target.value}))}
-                    />
-                  </div>
-                  <div>
-                    <label className="font-medium text-sm">Sueldo bruto por hora (€)</label>
-                    <input 
-                      type="number" 
-                      className="flex h-10 w-full border bg-background text-base rounded-lg p-2 mt-1" 
-                      placeholder="25"
-                      value={roaData.hourlyRate}
-                      onChange={(e) => setROAData(prev => ({...prev, hourlyRate: e.target.value}))}
-                    />
-                  </div>
-                  <div>
-                    <label className="font-medium text-sm">Coste de montarlo (€)</label>
-                    <input 
-                      type="number" 
-                      className="flex h-10 w-full border bg-background text-base rounded-lg p-2 mt-1" 
-                      placeholder="1800"
-                      value={roaData.setupCost}
-                      onChange={(e) => setROAData(prev => ({...prev, setupCost: e.target.value}))}
-                    />
-                  </div>
-                  <div>
-                    <label className="font-medium text-sm">Coste mensual (€)</label>
-                    <input 
-                      type="number" 
-                      className="flex h-10 w-full border bg-background text-base rounded-lg p-2 mt-1" 
-                      placeholder="150"
-                      value={roaData.monthlyCost}
-                      onChange={(e) => setROAData(prev => ({...prev, monthlyCost: e.target.value}))}
-                    />
-                  </div>
-                </div>
-                <Button 
-                  onClick={calculateROA}
-                  className="mt-4 w-full bg-brand-purple text-white font-semibold rounded-xl py-2.5 hover:bg-brand-purple/90 h-10 px-4"
-                >
-                  Calcular ROA
-                </Button>
-              </div>
-              
-              {showROAResult && (
-                <div className="card p-5 border bg-white max-w-2xl mx-auto mt-6">
-                  <div className="text-muted-foreground">Resultado estimado (horizonte de {roaData.months} meses):</div>
-                  <div className="mt-2 text-3xl font-black text-foreground">
-                    {roaData.calculatedROA >= 0 ? '+' : ''}{roaData.calculatedROA?.toLocaleString('es-ES')}€
-                  </div>
-                  <div className="mt-1 text-sm text-muted-foreground">
-                    {roaData.calculatedROA >= 0 ? 'ROA positivo - Vale la pena automatizar' : 'ROA negativo - Revisar números'}
-                  </div>
-                  <div className="mt-3 text-sm text-muted-foreground">
-                    ROA en tiempo: {roaData.calculatedTimeHours?.toLocaleString('es-ES')} horas
-                  </div>
-                  <div className="mt-3 font-semibold">
-                    Ahorro monetario: {roaData.calculatedSavings?.toLocaleString('es-ES')}€
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
 
         {/* Fit Section */}
         <section id="fit" className="py-14">

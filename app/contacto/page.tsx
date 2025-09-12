@@ -458,6 +458,16 @@ export default function ContactoPage() {
                         </div>
                         
                         <div className="flex items-start gap-3">
+                          <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                          <div>
+                            <p className="font-medium">Teléfono (Marcos - Business)</p>
+                            <a href="tel:+34016205922" className="text-primary hover:underline">
+                              +34 016 20 59 22
+                            </a>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-start gap-3">
                           <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                           <div>
                             <p className="font-medium">Ubicación</p>

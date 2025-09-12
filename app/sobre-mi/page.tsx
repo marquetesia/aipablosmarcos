@@ -59,7 +59,7 @@ export default function SobreNosotros() {
                     </div>
                     <h2 className="text-2xl font-bold mb-2">Pablos Tselioudis Garmendia</h2>
                     <p className="text-primary font-medium">Programmer & AI Specialist</p>
-                    <p className="text-sm text-muted-foreground mb-4">Experto en desarrollo, machine learning e implementación de IA</p>
+                    <p className="text-sm text-muted-foreground mb-4">Experto en desarrollo de Web, machine learning e implementación de IA</p>
                   </div>
                   
                   <div className="space-y-4 mb-6 flex-grow">
@@ -172,10 +172,16 @@ export default function SobreNosotros() {
                   </div>
 
                   <div className="flex gap-2 mt-auto">
-                    <a href="mailto:marcosguisado9@gmail.com" className="w-full">
+                    <a href="mailto:marcosguisado9@gmail.com" className="flex-1">
                       <Button className="w-full bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white">
                         <Mail className="h-4 w-4 mr-2" />
-                        Email Marcos
+                        Email
+                      </Button>
+                    </a>
+                    <a href="tel:+34016205922" className="flex-1">
+                      <Button variant="outline" className="w-full">
+                        <Phone className="h-4 w-4 mr-2" />
+                        Llamar
                       </Button>
                     </a>
                   </div>
