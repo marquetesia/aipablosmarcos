@@ -2,40 +2,46 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Instagram, Youtube, Home, Car, Cpu, ArrowRight, CheckCircle } from "lucide-react"
+import { Instagram, Youtube, Sparkles, Brain, Zap, ArrowRight, Phone } from "lucide-react"
 import { useRouter } from "next/navigation"
 import NavPill from "@/components/NavPill"
-import Hero from "@/components/Hero"
 
-export default function MainLanding() {
+export default function AIConsultingLanding() {
   const router = useRouter();
-  
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
       <NavPill />
       
       <main className="flex-grow pt-24 overflow-x-hidden w-full">
         {/* Hero Section - Background: bg-background */}
-        <section className="bg-background">
-          <div className="container mx-auto px-4 py-6 md:py-8 lg:py-12">
+        <section className="bg-background py-16">
+          <div className="container mx-auto px-4">
             <div className="text-center max-w-4xl mx-auto">
               {/* Profile Image */}
-              <div className="relative mb-4 md:mb-6">
+              <div className="relative mb-6">
                 <div className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-2xl overflow-hidden border-4 border-brand-purple p-1">
                   <div className="w-full h-full rounded-2xl overflow-hidden">
                     <img
-                      src="/logo.png"
-                      alt="Logo"
+                      src="/pablosmarcos.jpeg"
+                      alt="Pablos y Marcos"
                       className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
               </div>
 
-              <Hero />
+              <h1 className="text-5xl md:text-7xl font-normal mb-6 tracking-tighter">
+                <span className="text-brand-purple">Transforma tu </span>
+                <span className="font-bold text-foreground">negocio </span>
+                <span className="text-brand-purple">con IA</span>
+              </h1>
+
+              <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl mx-auto mb-8">
+                Descubre el poder de la Inteligencia Artificial para revolucionar tu empresa y alcanzar nuevos niveles de éxito
+              </p>
 
               {/* Social Media Icons */}
-              <div className="flex justify-center space-x-4 md:space-x-6 mb-10 md:mb-12 mt-8">
+              <div className="flex justify-center space-x-4 md:space-x-6 mb-8">
                 <a href="https://www.instagram.com/ia.pablosmarcos/" target="_blank" rel="noopener noreferrer" className="group">
                   <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-pink-500/50">
                     <Instagram className="h-6 w-6 md:h-8 md:w-8 text-white" />
@@ -52,114 +58,154 @@ export default function MainLanding() {
                   </div>
                 </a>
               </div>
+
+              <div className="flex flex-row gap-3 justify-center">
+                <a href="/contacto" className="btn btn-outline h-11 px-8 gap-4">
+                  Agendar llamada
+                  <Phone className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Stats Section - Background: bg-white */}
+        {/* Features Section - Background: bg-white */}
         <section className="bg-white py-16">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {/* Stat 1 */}
-              <div className="card card-hover p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-green-50 text-green-600 flex items-center justify-center">
-                  <CheckCircle className="w-6 h-6" />
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground text-center mb-12 tracking-tight">
+              ¿Por qué elegir IA para tu negocio?
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {/* Feature 1 */}
+              <div className="card card-hover p-8 text-center">
+                <div className="w-12 h-12 mx-auto mb-6 rounded-lg bg-yellow-100 text-yellow-600 flex items-center justify-center">
+                  <Zap className="w-6 h-6" />
                 </div>
-                <div className="text-3xl font-bold text-foreground mb-2">30%</div>
-                <div className="text-sm font-medium text-foreground mb-2">Más Productivo</div>
-                <p className="text-sm text-muted-foreground">Tu equipo trabaja más rápido con automatización</p>
+                <h3 className="text-xl font-bold text-foreground mb-3">Automatización</h3>
+                <p className="text-muted-foreground">Optimiza procesos y reduce costos operativos con soluciones inteligentes que trabajan 24/7</p>
               </div>
 
-              {/* Stat 2 */}
-              <div className="card card-hover p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">
-                  <Cpu className="w-6 h-6" />
+              {/* Feature 2 */}
+              <div className="card card-hover p-8 text-center">
+                <div className="w-12 h-12 mx-auto mb-6 rounded-lg bg-purple-100 text-brand-purple flex items-center justify-center">
+                  <Brain className="w-6 h-6" />
                 </div>
-                <div className="text-3xl font-bold text-foreground mb-2">24/7</div>
-                <div className="text-sm font-medium text-foreground mb-2">Automatización</div>
-                <p className="text-sm text-muted-foreground">Procesos que funcionan sin intervención manual</p>
+                <h3 className="text-xl font-bold text-foreground mb-3">Análisis Inteligente</h3>
+                <p className="text-muted-foreground">Toma decisiones basadas en datos precisos y patrones que solo la IA puede identificar</p>
               </div>
 
-              {/* Stat 3 */}
-              <div className="card card-hover p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-purple-50 text-brand-purple flex items-center justify-center">
-                  <Home className="w-6 h-6" />
+              {/* Feature 3 */}
+              <div className="card card-hover p-8 text-center">
+                <div className="w-12 h-12 mx-auto mb-6 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
+                  <Sparkles className="w-6 h-6" />
                 </div>
-                <div className="text-3xl font-bold text-foreground mb-2">50+</div>
-                <div className="text-sm font-medium text-foreground mb-2">Clientes</div>
-                <p className="text-sm text-muted-foreground">Empresas que confían en nuestros servicios</p>
-              </div>
-
-              {/* Stat 4 */}
-              <div className="card card-hover p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-yellow-50 text-yellow-600 flex items-center justify-center">
-                  <ArrowRight className="w-6 h-6" />
-                </div>
-                <div className="text-3xl font-bold text-foreground mb-2">100%</div>
-                <div className="text-sm font-medium text-foreground mb-2">Personalizado</div>
-                <p className="text-sm text-muted-foreground">Soluciones adaptadas a tu negocio específico</p>
+                <h3 className="text-xl font-bold text-foreground mb-3">Innovación</h3>
+                <p className="text-muted-foreground">Mantente a la vanguardia tecnológica e impulsa la transformación digital de tu empresa</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Services Section - Background: bg-notion-gray/50 */}
-        <section className="bg-notion-gray/50 py-16">
+        {/* Tools Section - Background: bg-secondary */}
+        <section className="bg-secondary py-16">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground text-center mb-8 md:mb-12 tracking-tight">
-              Nuestros Servicios
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground text-center mb-4 tracking-tight">
+              Herramientas que domino
             </h2>
+            <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+              Implemento las mejores plataformas de automatización para transformar tu negocio
+            </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {/* Real Estate Service */}
-              <div className="card hover:-translate-y-1 transition-all duration-300 overflow-hidden bg-white h-full">
-                <CardContent className="p-6 md:p-8">
-                  <div className="pill bg-blue-100 text-blue-700 mb-4 w-fit">Próximamente</div>
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-blue-100 text-blue-600 mb-6">
-                    <Home className="h-6 w-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-3">Asesoría Inmobiliaria</h3>
-                  <p className="text-muted-foreground mb-6">Expertos en inversiones inmobiliarias y gestión de propiedades</p>
-                  <button className="inline-flex items-center text-brand-purple font-medium group cursor-not-allowed opacity-50">
-                    Próximamente
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {/* Notion */}
+              <div className="card p-8">
+                <div className="w-16 h-16 mx-auto mb-6 rounded-lg bg-white border border-gray-200 flex items-center justify-center p-2">
+                  <img src="/notion.png" alt="Notion" className="w-full h-full object-contain" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-4 text-center">Notion</h3>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Bases de datos relacionales</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Automatizaciones internas</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Gestión de proyectos</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Dashboards personalizados</span>
+                  </li>
+                </ul>
+                <Button className="w-full bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105" onClick={() => router.push('/notion')}>
+                  Explorar Notion
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </div>
 
-              {/* Carsharing Service */}
-              <div className="card hover:-translate-y-1 transition-all duration-300 overflow-hidden bg-white h-full">
-                <CardContent className="p-6 md:p-8">
-                  <div className="pill bg-purple-100 text-purple-700 mb-4 w-fit">Próximamente</div>
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-purple-100 text-brand-purple mb-6">
-                    <Car className="h-6 w-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-3">Carsharing y Rentabilidad</h3>
-                  <p className="text-muted-foreground mb-6">Maximiza tus ingresos con gestión inteligente de vehículos</p>
-                  <button className="inline-flex items-center text-brand-purple font-medium group cursor-not-allowed opacity-50">
-                    Próximamente
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </CardContent>
+              {/* GoHighLevel */}
+              <div className="card p-8">
+                <div className="w-16 h-16 mx-auto mb-6 rounded-lg bg-white border border-gray-200 flex items-center justify-center p-2">
+                  <img src="/gohighlevel.jpg" alt="GoHighLevel" className="w-full h-full object-contain rounded" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-4 text-center">GoHighLevel</h3>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">CRM completo</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Email marketing</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Funnels de ventas</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Automatización de leads</span>
+                  </li>
+                </ul>
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105" onClick={() => router.push('/gohighlevel')}>
+                  Explorar GoHighLevel
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </div>
 
-              {/* AI Service */}
-              <div className="card hover:-translate-y-1 transition-all duration-300 overflow-hidden bg-white h-full">
-                <CardContent className="p-6 md:p-8">
-                  <div className="pill bg-green-100 text-green-700 mb-4 w-fit">Disponible</div>
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-green-100 text-green-600 mb-6">
-                    <Cpu className="h-6 w-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-3">Automatización con IA</h3>
-                  <p className="text-muted-foreground mb-6">Transforma tu negocio con Inteligencia Artificial</p>
-                  <button
-                    className="inline-flex items-center text-brand-purple font-medium group"
-                    onClick={() => router.push('/ia')}
-                  >
-                    Descubrir más
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </CardContent>
+              {/* n8n */}
+              <div className="card p-8">
+                <div className="w-16 h-16 mx-auto mb-6 rounded-lg bg-white border border-gray-200 flex items-center justify-center p-2">
+                  <img src="/n8n.png" alt="n8n" className="w-full h-full object-contain" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-4 text-center">n8n</h3>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Workflows personalizados</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Integraciones API</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Automatización compleja</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Conexión entre sistemas</span>
+                  </li>
+                </ul>
+                <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105" onClick={() => router.push('/n8n')}>
+                  Explorar n8n
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </div>
             </div>
           </div>
@@ -168,20 +214,20 @@ export default function MainLanding() {
         {/* CTA Section - Background: bg-white */}
         <section className="bg-white py-16">
           <div className="container mx-auto px-4">
-            <div className="text-center card p-8 md:p-12 max-w-4xl mx-auto">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4 tracking-tight">
-                ¿Listo para empezar?
+            <div className="text-center card p-12 max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 tracking-tight">
+                ¿Listo para transformar tu negocio?
               </h2>
-              <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Agenda una llamada gratuita y descubre cómo podemos ayudarte a alcanzar tus objetivos
+              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Agenda una llamada y descubre cómo la IA puede revolucionar tu empresa
               </p>
               <Button
                 size="lg"
-                className="btn-outline h-11 px-8 text-base group"
-                onClick={() => router.push('/booking')}
+                className="btn-outline h-12 px-12 text-lg group"
+                onClick={() => router.push('/contacto')}
               >
                 Agenda tu llamada gratuita
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
           </div>
@@ -192,7 +238,7 @@ export default function MainLanding() {
       <footer className="border-t border-border mt-12 pt-6">
         <div className="container mx-auto px-4 py-8">
           <div className="text-center text-muted-foreground">
-            <p>&copy; 2024 Pablos Marcos. Todos los derechos reservados.</p>
+            <p>&copy; 2024 Consultoría IA - Pablos Marcos. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>

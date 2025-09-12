@@ -1,9 +1,9 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
-import { getAnalytics } from "firebase/analytics";
+import { initializeApp, type FirebaseApp } from "firebase/app";
+import { getAuth, type Auth } from "firebase/auth";
+import { getFirestore, type Firestore } from "firebase/firestore";
+import { getStorage, type FirebaseStorage } from "firebase/storage";
+import { getAnalytics, type Analytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,11 +17,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase only if we have a valid config and are in browser
-let app = null;
-let auth = null;
-let db = null;
-let storage = null;
-let analytics = null;
+let app: FirebaseApp | null = null;
+let auth: Auth | null = null;
+let db: Firestore | null = null;
+let storage: FirebaseStorage | null = null;
+let analytics: Analytics | null = null;
 
 // Only initialize Firebase in the browser with valid config
 if (typeof window !== 'undefined' && firebaseConfig.apiKey && firebaseConfig.projectId) {

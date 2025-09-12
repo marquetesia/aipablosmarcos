@@ -33,7 +33,7 @@ const config: Config = {
           foreground: "hsl(var(--destructive-foreground))"
         },
         // Brand + utility colors
-        "brand-purple": "#9b87f5",
+        "brand-purple": "#f36e64",
         "notion-gray": "#F7F7F7",
         "notion-yellow": "#FFE082",
         "notion-blue": "#D6E4FF",

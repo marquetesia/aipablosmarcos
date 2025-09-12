@@ -7,9 +7,9 @@ export const metadata: Metadata = {
   description: 'Consultoría en IA, asesoría inmobiliaria y carsharing con Pablos Marcos',
   generator: 'Next.js',
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
-    apple: '/favicon.png',
+    icon: '/favicon1.ico',
+    shortcut: '/favicon1.ico',
+    apple: '/favicon1.ico',
   },
 }
 

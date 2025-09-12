@@ -2,21 +2,35 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Home, User, Briefcase, BookOpen, Phone } from "lucide-react";
+import { Home, User, Briefcase, Phone } from "lucide-react";
 
 const items = [
   { href: "/", label: "Inicio", icon: Home },
-  { href: "/sobre-mi", label: "Sobre mí", icon: User },
+  { href: "/sobre-mi", label: "Sobre Nosotros", icon: User },
   { href: "/servicios", label: "Servicios", icon: Briefcase },
-  { href: "/casos-de-uso", label: "Casos de uso", icon: BookOpen },
   { href: "/contacto", label: "Contacto", icon: Phone },
 ];
 
 export default function NavPill() {
   const pathname = usePathname();
   return (
-    <div className="fixed top-0 left-1/2 -translate-x-1/2 z-50 pt-6">
-      <nav className="flex items-center gap-3 glass py-1 px-1 rounded-full">
+    <>
+      {/* Logo Bubble */}
+      <div className="fixed top-0 left-6 z-50 pt-6">
+        <div className="glass py-1 px-3 rounded-full h-[42px] w-[120px] flex items-center justify-center">
+          <Link href="/" className="w-full h-full flex items-center justify-center">
+            <img 
+              src="/iaconsultora.png" 
+              alt="IA Consultora" 
+              className="w-full h-full object-contain"
+            />
+          </Link>
+        </div>
+      </div>
+      
+      {/* Navigation */}
+      <div className="fixed top-0 left-1/2 -translate-x-1/2 z-50 pt-6">
+        <nav className="flex items-center gap-3 glass py-1 px-1 rounded-full">
         {items.map((it) => {
           const active = pathname === it.href;
           const IconComponent = it.icon;
@@ -50,5 +64,6 @@ export default function NavPill() {
         })}
       </nav>
     </div>
+    </>
   );
 }
