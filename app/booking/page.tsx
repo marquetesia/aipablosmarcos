@@ -73,7 +73,7 @@ export default function BookingPage() {
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
                 <span className="text-brand-purple">Agenda tu </span>
-                <span>llamada gratuita</span>
+                <span>llamada</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Reserva tu consultoría personalizada y descubre cómo podemos transformar tu negocio

@@ -15,8 +15,8 @@ export default function NavPill() {
   const pathname = usePathname();
   return (
     <>
-      {/* Logo Bubble */}
-      <div className="fixed top-0 left-6 z-50 pt-6">
+      {/* Logo Bubble - Hidden on mobile */}
+      <div className="fixed top-0 left-6 z-50 pt-6 hidden md:block">
         <div className="glass py-1 px-3 rounded-full h-[42px] w-[120px] flex items-center justify-center">
           <Link href="/" className="w-full h-full flex items-center justify-center">
             <img 

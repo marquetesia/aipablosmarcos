@@ -129,7 +129,7 @@ export default function ContactoPage() {
                 Hablemos de tu <span className="text-primary">Proyecto</span>
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Agenda una llamada gratuita y descubre cómo podemos transformar tu empresa con automatización e IA
+                Agenda una llamada y descubre cómo podemos transformar tu empresa con automatización e IA
               </p>
               
               {/* Quick Action Buttons */}
@@ -139,7 +139,7 @@ export default function ContactoPage() {
                   onClick={() => setShowBookingForm(true)}
                 >
                   <CalendarIcon className="mr-2 h-5 w-5" />
-                  Agendar Llamada Gratuita
+                  Agendar Llamada
                 </Button>
                 <p className="text-sm text-muted-foreground">
                   O envíanos un mensaje abajo
@@ -157,7 +157,7 @@ export default function ContactoPage() {
             <div className="container">
               <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4">Agenda tu Llamada Gratuita</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4">Agenda tu Llamada</h2>
                   <p className="text-lg text-muted-foreground">
                     Reserva tu consultoría personalizada de 30 minutos
                   </p>
@@ -478,7 +478,7 @@ export default function ContactoPage() {
                           </div>
                           <div>
                             <p className="font-medium">Consulta Inicial</p>
-                            <p className="text-sm text-muted-foreground">Llamada gratuita de 30 minutos para entender tus necesidades</p>
+                            <p className="text-sm text-muted-foreground">Llamada de 30 minutos para entender tus necesidades</p>
                           </div>
                         </div>
                         

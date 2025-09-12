@@ -208,7 +208,7 @@ export default function AIConsultingLanding() {
                 className="btn-outline h-12 px-12 text-lg group"
                 onClick={() => router.push('/contacto')}
               >
-                Agenda tu llamada gratuita
+                Agenda tu llamada
                 <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
