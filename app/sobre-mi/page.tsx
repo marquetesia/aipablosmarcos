@@ -46,8 +46,8 @@ export default function SobreNosotros() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
               
               {/* Pablos Profile */}
-              <Card className="overflow-hidden">
-                <CardContent className="p-8">
+              <Card className="overflow-hidden h-full">
+                <CardContent className="p-8 h-full flex flex-col">
                   <div className="text-center mb-6">
                     <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 border-4 border-gradient-to-br from-blue-500 to-purple-600">
                       <img
@@ -62,7 +62,7 @@ export default function SobreNosotros() {
                     <p className="text-sm text-muted-foreground mb-4">Experto en desarrollo, machine learning e implementación de IA</p>
                   </div>
                   
-                  <div className="space-y-4 mb-6">
+                  <div className="space-y-4 mb-6 flex-grow">
                     <div className="flex items-start gap-3">
                       <GraduationCap className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                       <div>
@@ -103,7 +103,7 @@ export default function SobreNosotros() {
                     </div>
                   </div>
 
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 mt-auto">
                     <a href="mailto:pablos.tselioudis@gmail.com" className="w-full">
                       <Button variant="outline" className="w-full text-sm">
                         <Mail className="h-4 w-4 mr-2" />
@@ -115,8 +115,8 @@ export default function SobreNosotros() {
               </Card>
 
               {/* Marcos Profile */}
-              <Card className="overflow-hidden">
-                <CardContent className="p-8">
+              <Card className="overflow-hidden h-full">
+                <CardContent className="p-8 h-full flex flex-col">
                   <div className="text-center mb-6">
                     <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 border-4 border-gradient-to-br from-green-500 to-blue-600">
                       <img
@@ -131,7 +131,7 @@ export default function SobreNosotros() {
                     <p className="text-sm text-muted-foreground mb-4">Especialista en ventas, desarrollo de negocio y estrategia comercial</p>
                   </div>
                   
-                  <div className="space-y-4 mb-6">
+                  <div className="space-y-4 mb-6 flex-grow">
                     <div className="flex items-start gap-3">
                       <Users className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                       <div>
@@ -171,7 +171,7 @@ export default function SobreNosotros() {
                     </div>
                   </div>
 
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 mt-auto">
                     <a href="mailto:marcosguisado9@gmail.com" className="w-full">
                       <Button className="w-full bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white">
                         <Mail className="h-4 w-4 mr-2" />

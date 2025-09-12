@@ -135,7 +135,7 @@ export default function ContactoPage() {
               {/* Quick Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                 <Button 
-                  className="h-12 px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg"
+                  className="h-12 px-8 bg-brand-purple hover:bg-brand-purple/90 text-white text-lg"
                   onClick={() => setShowBookingForm(true)}
                 >
                   <CalendarIcon className="mr-2 h-5 w-5" />
@@ -334,7 +334,7 @@ export default function ContactoPage() {
 
                         <Button
                           type="submit"
-                          className="w-full h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg font-semibold"
+                          className="w-full h-14 bg-brand-purple hover:bg-brand-purple/90 text-white text-lg font-semibold"
                         >
                           Confirmar Reserva
                           <ArrowRight className="ml-3 h-5 w-5" />
@@ -433,7 +433,7 @@ export default function ContactoPage() {
                         />
                       </div>
 
-                      <Button type="submit" className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                      <Button type="submit" className="w-full h-12 bg-brand-purple hover:bg-brand-purple/90 text-white">
                         Enviar Mensaje
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>

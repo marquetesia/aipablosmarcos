@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Instagram, Youtube, Sparkles, Brain, Zap, ArrowRight, Phone } from "lucide-react"
+import { Sparkles, Brain, Zap, ArrowRight, Phone } from "lucide-react"
 import { useRouter } from "next/navigation"
 import NavPill from "@/components/NavPill"
 
@@ -40,24 +40,6 @@ export default function AIConsultingLanding() {
                 Descubre el poder de la Inteligencia Artificial para revolucionar tu empresa y alcanzar nuevos niveles de éxito
               </p>
 
-              {/* Social Media Icons */}
-              <div className="flex justify-center space-x-4 md:space-x-6 mb-8">
-                <a href="https://www.instagram.com/ia.pablosmarcos/" target="_blank" rel="noopener noreferrer" className="group">
-                  <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-pink-500/50">
-                    <Instagram className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                  </div>
-                </a>
-                <a href="https://www.youtube.com/@IAPablosMarcos" target="_blank" rel="noopener noreferrer" className="group">
-                  <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-red-500/50">
-                    <Youtube className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                  </div>
-                </a>
-                <a href="https://www.tiktok.com/@iapablosmarcos" target="_blank" rel="noopener noreferrer" className="group">
-                  <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-black to-gray-800 rounded-full flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-gray-500/50">
-                    <img src="/tiktok.jpg" alt="TikTok" className="h-10 w-10 md:h-14 md:w-14 object-cover rounded-full" />
-                  </div>
-                </a>
-              </div>
 
               <div className="flex flex-row gap-3 justify-center">
                 <a href="/contacto" className="btn btn-outline h-11 px-8 gap-4">
