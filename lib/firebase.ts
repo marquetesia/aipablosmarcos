@@ -24,15 +24,29 @@ let storage: FirebaseStorage | null = null;
 let analytics: Analytics | null = null;
 
 // Only initialize Firebase in the browser with valid config
-if (typeof window !== 'undefined' && firebaseConfig.apiKey && firebaseConfig.projectId) {
-  try {
-    app = initializeApp(firebaseConfig);
-    auth = getAuth(app);
-    db = getFirestore(app);
-    storage = getStorage(app);
-    analytics = getAnalytics(app);
-  } catch (error) {
-    console.error("Firebase initialization error:", error);
+if (typeof window !== 'undefined') {
+  // Check if we have the required config
+  if (firebaseConfig.apiKey && firebaseConfig.projectId) {
+    try {
+      app = initializeApp(firebaseConfig);
+      auth = getAuth(app);
+      db = getFirestore(app);
+      storage = getStorage(app);
+      // Analytics might fail in development, so make it optional
+      try {
+        analytics = getAnalytics(app);
+      } catch (analyticsError) {
+        console.warn("Analytics initialization failed:", analyticsError);
+      }
+      console.log("Firebase initialized successfully");
+    } catch (error) {
+      console.error("Firebase initialization error:", error);
+    }
+  } else {
+    console.error("Firebase config is missing required fields:", {
+      hasApiKey: !!firebaseConfig.apiKey,
+      hasProjectId: !!firebaseConfig.projectId
+    });
   }
 }
 

@@ -8,16 +8,25 @@ import { Label } from "@/components/ui/label"
 import { Calendar } from "@/components/ui/calendar"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ArrowRight, Mail, Phone, MapPin, Calendar as CalendarIcon, Clock, Users, Target } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 // @ts-ignore - Firebase db may be null during build
 import { db } from "@/lib/firebase"
-import { collection, addDoc } from "firebase/firestore"
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore"
 import { toast } from "sonner"
 import NavPill from "@/components/NavPill"
 
 export default function ContactoPage() {
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [showBookingForm, setShowBookingForm] = useState(false);
+  const [bookedSlots, setBookedSlots] = useState<string[]>([]);
+  const [loadingSlots, setLoadingSlots] = useState(false);
+
+  // All available time slots
+  const allTimeSlots = [
+    "10:00 - 11:00",
+    "17:00 - 18:00",
+    "18:00 - 19:00"
+  ];
 
   // Blocked dates (can be updated as needed)
   const blockedDates = [
@@ -58,11 +67,72 @@ export default function ContactoPage() {
     setContactFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  // Function to check booked slots for a specific date
+  const checkBookedSlots = async (selectedDate: Date) => {
+    if (!db) return;
+
+    setLoadingSlots(true);
+    try {
+      const dateString = selectedDate.toDateString();
+      const bookingsQuery = query(
+        collection(db, "bookings"),
+        where("dateString", "==", dateString)
+      );
+
+      const querySnapshot = await getDocs(bookingsQuery);
+      const bookedTimes: string[] = [];
+
+      querySnapshot.forEach((doc) => {
+        const booking = doc.data();
+        if (booking.time) {
+          bookedTimes.push(booking.time);
+        }
+      });
+
+      setBookedSlots(bookedTimes);
+      console.log(`Found ${bookedTimes.length} booked slots for ${dateString}:`, bookedTimes);
+    } catch (error) {
+      console.error("Error checking booked slots:", error);
+    } finally {
+      setLoadingSlots(false);
+    }
+  };
+
+  // Function to get available time slots
+  const getAvailableTimeSlots = () => {
+    return allTimeSlots.filter(slot => !bookedSlots.includes(slot));
+  };
+
+  // Effect to check booked slots when date changes
+  useEffect(() => {
+    if (date) {
+      checkBookedSlots(date);
+    } else {
+      setBookedSlots([]);
+      // Clear selected time when no date is selected
+      setBookingFormData(prev => ({ ...prev, time: "" }));
+    }
+  }, [date, db]);
+
+  // Effect to clear selected time if it becomes unavailable
+  useEffect(() => {
+    if (bookingFormData.time && bookedSlots.includes(bookingFormData.time)) {
+      setBookingFormData(prev => ({ ...prev, time: "" }));
+      toast.warning("El horario seleccionado ya no está disponible. Por favor elige otro.");
+    }
+  }, [bookedSlots, bookingFormData.time]);
+
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
+    // Wait a bit for Firebase to initialize if it hasn't yet
     if (!db) {
-      toast.error("Error de conexión. Por favor recarga la página.");
+      await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+
+    if (!db) {
+      console.error("Firebase DB not initialized");
+      toast.error("Error de conexión con la base de datos. Por favor recarga la página e intenta de nuevo.");
       return;
     }
 
@@ -70,11 +140,14 @@ export default function ContactoPage() {
       const contactData = {
         ...contactFormData,
         type: 'contact',
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        timestamp: Date.now()
       };
 
-      await addDoc(collection(db, "contacts"), contactData);
-      
+      console.log("Attempting to save contact data:", contactData);
+      const docRef = await addDoc(collection(db, "contacts"), contactData);
+      console.log("Contact saved with ID:", docRef.id);
+
       toast.success("¡Mensaje enviado! Te contactaremos pronto.");
       setContactFormData({
         empresa: '',
@@ -86,21 +159,27 @@ export default function ContactoPage() {
         presupuesto: ''
       });
     } catch (error) {
-      console.error("Error:", error);
-      toast.error("Error al enviar el mensaje. Intenta de nuevo.");
+      console.error("Error saving contact:", error);
+      toast.error(`Error al enviar el mensaje: ${error instanceof Error ? error.message : 'Error desconocido'}`);
     }
   };
 
   const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!date || !bookingFormData.time) {
       toast.error("Por favor selecciona una fecha y hora");
       return;
     }
 
+    // Wait a bit for Firebase to initialize if it hasn't yet
     if (!db) {
-      toast.error("Error de conexión. Por favor recarga la página.");
+      await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+
+    if (!db) {
+      console.error("Firebase DB not initialized");
+      toast.error("Error de conexión con la base de datos. Por favor recarga la página e intenta de nuevo.");
       return;
     }
 
@@ -108,12 +187,16 @@ export default function ContactoPage() {
       const bookingData = {
         ...bookingFormData,
         date: date.toISOString(),
+        dateString: date.toDateString(),
         type: 'booking',
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        timestamp: Date.now()
       };
 
-      await addDoc(collection(db, "bookings"), bookingData);
-      
+      console.log("Attempting to save booking data:", bookingData);
+      const docRef = await addDoc(collection(db, "bookings"), bookingData);
+      console.log("Booking saved with ID:", docRef.id);
+
       toast.success("¡Reserva confirmada! Te contactaremos pronto.");
       setBookingFormData({
         time: "",
@@ -126,9 +209,10 @@ export default function ContactoPage() {
         presupuesto: ""
       });
       setDate(undefined);
+      setShowBookingForm(false);
     } catch (error) {
-      console.error("Error:", error);
-      toast.error("Error al guardar la reserva. Intenta de nuevo.");
+      console.error("Error saving booking:", error);
+      toast.error(`Error al guardar la reserva: ${error instanceof Error ? error.message : 'Error desconocido'}`);
     }
   };
 
@@ -225,14 +309,32 @@ export default function ContactoPage() {
                           </div>
                           <h3 className="text-xl font-bold">Selecciona una hora</h3>
                         </div>
-                        <Select value={bookingFormData.time} onValueChange={(value) => setBookingFormData({...bookingFormData, time: value})}>
+                        <Select
+                          value={bookingFormData.time}
+                          onValueChange={(value) => setBookingFormData({...bookingFormData, time: value})}
+                          disabled={!date || loadingSlots}
+                        >
                           <SelectTrigger className="h-12">
-                            <SelectValue placeholder="Elige una hora" />
+                            <SelectValue
+                              placeholder={
+                                !date ? "Selecciona primero una fecha" :
+                                loadingSlots ? "Cargando horarios..." :
+                                getAvailableTimeSlots().length === 0 ? "No hay horarios disponibles" :
+                                "Elige una hora"
+                              }
+                            />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="10:00 - 11:00">10:00 - 11:00</SelectItem>
-                            <SelectItem value="17:00 - 18:00">17:00 - 18:00</SelectItem>
-                            <SelectItem value="18:00 - 19:00">18:00 - 19:00</SelectItem>
+                            {getAvailableTimeSlots().map((slot) => (
+                              <SelectItem key={slot} value={slot}>
+                                {slot}
+                              </SelectItem>
+                            ))}
+                            {getAvailableTimeSlots().length === 0 && date && !loadingSlots && (
+                              <SelectItem value="" disabled>
+                                No hay horarios disponibles para esta fecha
+                              </SelectItem>
+                            )}
                           </SelectContent>
                         </Select>
                       </CardContent>
