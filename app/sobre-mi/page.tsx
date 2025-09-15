@@ -104,7 +104,7 @@ export default function SobreNosotros() {
                   </div>
 
                   <div className="flex gap-2 mt-auto">
-                    <a href="mailto:pablos.tselioudis@gmail.com" className="w-full">
+                    <a href="mailto:pablos@iaconsultora.net" className="w-full">
                       <Button variant="outline" className="w-full text-sm">
                         <Mail className="h-4 w-4 mr-2" />
                         Email Pablos
@@ -172,13 +172,13 @@ export default function SobreNosotros() {
                   </div>
 
                   <div className="flex gap-2 mt-auto">
-                    <a href="mailto:marcosguisado9@gmail.com" className="flex-1">
+                    <a href="mailto:marcos@iaconsultora.net" className="flex-1">
                       <Button className="w-full bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white">
                         <Mail className="h-4 w-4 mr-2" />
                         Email
                       </Button>
                     </a>
-                    <a href="tel:+34016205922" className="flex-1">
+                    <a href="tel:+34916205922" className="flex-1">
                       <Button variant="outline" className="w-full">
                         <Phone className="h-4 w-4 mr-2" />
                         Llamar

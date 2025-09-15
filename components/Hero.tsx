@@ -48,7 +48,7 @@ export default function Hero() {
 
             <div className="flex flex-row gap-3 mt-2">
               <a href="/booking" className="btn btn-outline h-11 px-8 gap-4">
-                Agendar llamada
+                Agendar Reunión
                 <Phone className="w-4 h-4" />
               </a>
             </div>

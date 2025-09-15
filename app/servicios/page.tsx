@@ -315,7 +315,7 @@ export default function ServiciosPage() {
         {/* Final CTA Section */}
         <section id="calendar-section" className="py-16">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-2 text-foreground">Agendar llamada</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-2 text-foreground">Agendar Reunión</h2>
             <p className="text-muted-foreground mb-8">3 pasos rápidos. Si encaja, bloqueamos semana de inicio.</p>
             
             <div className="text-center">
@@ -324,7 +324,7 @@ export default function ServiciosPage() {
                 className="btn-outline h-12 px-12 text-lg group"
                 onClick={() => router.push('/booking')}
               >
-                Agenda tu llamada
+                Agenda tu Reunión
                 <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>

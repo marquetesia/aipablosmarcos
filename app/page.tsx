@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Sparkles, Brain, Zap, ArrowRight, Phone } from "lucide-react"
+import { Sparkles, Brain, Zap, ArrowRight, Phone, Code } from "lucide-react"
 import { useRouter } from "next/navigation"
 import NavPill from "@/components/NavPill"
 
@@ -43,7 +43,7 @@ export default function AIConsultingLanding() {
 
               <div className="flex flex-row gap-3 justify-center">
                 <a href="/contacto" className="btn btn-outline h-11 px-8 gap-4">
-                  Agendar llamada
+                  Agendar Reunión
                   <Phone className="w-4 h-4" />
                 </a>
               </div>
@@ -99,7 +99,7 @@ export default function AIConsultingLanding() {
               Implemento las mejores plataformas de automatización para transformar tu negocio
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
               {/* Notion */}
               <div className="card p-8">
                 <div className="w-16 h-16 mx-auto mb-6 rounded-lg bg-white border border-gray-200 flex items-center justify-center p-2">
@@ -189,6 +189,36 @@ export default function AIConsultingLanding() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
+
+              {/* Desarrollo de Webs */}
+              <div className="card p-8">
+                <div className="w-16 h-16 mx-auto mb-6 rounded-lg bg-white border border-gray-200 flex items-center justify-center p-2">
+                  <Code className="w-8 h-8 text-green-600" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-4 text-center">Desarrollo de Webs</h3>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Sitios web modernos</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Apps web personalizadas</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Diseño responsivo</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">Optimización SEO</span>
+                  </li>
+                </ul>
+                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105" onClick={() => router.push('/contacto')}>
+                  Solicitar Desarrollo
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
             </div>
           </div>
         </section>
@@ -208,7 +238,7 @@ export default function AIConsultingLanding() {
                 className="btn-outline h-12 px-12 text-lg group"
                 onClick={() => router.push('/contacto')}
               >
-                Agenda tu llamada
+                Agenda tu Reunión
                 <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>

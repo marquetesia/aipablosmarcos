@@ -9,6 +9,7 @@ import { Calendar } from "@/components/ui/calendar"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ArrowRight, Mail, Phone, MapPin, Calendar as CalendarIcon, Clock, Users, Target } from "lucide-react"
 import { useState } from "react"
+// @ts-ignore - Firebase db may be null during build
 import { db } from "@/lib/firebase"
 import { collection, addDoc } from "firebase/firestore"
 import { toast } from "sonner"
@@ -17,13 +18,24 @@ import NavPill from "@/components/NavPill"
 export default function ContactoPage() {
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [showBookingForm, setShowBookingForm] = useState(false);
+
+  // Blocked dates (can be updated as needed)
+  const blockedDates = [
+    new Date(2024, 11, 25), // Christmas Day
+    new Date(2024, 11, 31), // New Year's Eve
+    new Date(2025, 0, 1),   // New Year's Day
+    new Date(2025, 0, 6),   // Epiphany
+    // Add more blocked dates as needed
+  ];
   
   const [contactFormData, setContactFormData] = useState({
-    nombre: '',
+    empresa: '',
     email: '',
     telefono: '',
-    empresa: '',
-    mensaje: ''
+    ciudad: '',
+    servicio: '',
+    objetivo: '',
+    presupuesto: ''
   });
 
   const [bookingFormData, setBookingFormData] = useState({
@@ -33,7 +45,6 @@ export default function ContactoPage() {
     telefono: "",
     servicio: "",
     objetivo: "",
-    experiencia: "",
     ciudad: "",
     presupuesto: ""
   });
@@ -41,6 +52,10 @@ export default function ContactoPage() {
   const handleContactInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setContactFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleContactSelectChange = (field: string, value: string) => {
+    setContactFormData(prev => ({ ...prev, [field]: value }));
   };
 
   const handleContactSubmit = async (e: React.FormEvent) => {
@@ -62,11 +77,13 @@ export default function ContactoPage() {
       
       toast.success("¡Mensaje enviado! Te contactaremos pronto.");
       setContactFormData({
-        nombre: '',
+        empresa: '',
         email: '',
         telefono: '',
-        empresa: '',
-        mensaje: ''
+        ciudad: '',
+        servicio: '',
+        objetivo: '',
+        presupuesto: ''
       });
     } catch (error) {
       console.error("Error:", error);
@@ -105,7 +122,6 @@ export default function ContactoPage() {
         telefono: "",
         servicio: "",
         objetivo: "",
-        experiencia: "",
         ciudad: "",
         presupuesto: ""
       });
@@ -135,11 +151,11 @@ export default function ContactoPage() {
               {/* Quick Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                 <Button 
-                  className="h-12 px-8 bg-brand-purple hover:bg-brand-purple/90 text-white text-lg"
+                  className="h-12 px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg"
                   onClick={() => setShowBookingForm(true)}
                 >
                   <CalendarIcon className="mr-2 h-5 w-5" />
-                  Agendar Llamada
+                  Agendar Reunión
                 </Button>
                 <p className="text-sm text-muted-foreground">
                   O envíanos un mensaje abajo
@@ -157,7 +173,7 @@ export default function ContactoPage() {
             <div className="container">
               <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4">Agenda tu Llamada</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4">Agenda tu Reunión Gratuita</h2>
                   <p className="text-lg text-muted-foreground">
                     Reserva tu consultoría personalizada de 30 minutos
                   </p>
@@ -185,7 +201,16 @@ export default function ContactoPage() {
                           mode="single"
                           selected={date}
                           onSelect={setDate}
-                          disabled={(date) => date < new Date() || date.getDay() === 0 || date.getDay() === 6}
+                          disabled={(date) =>
+                            date < new Date() ||
+                            date.getDay() === 0 ||
+                            date.getDay() === 6 ||
+                            blockedDates.some(blockedDate =>
+                              date.getDate() === blockedDate.getDate() &&
+                              date.getMonth() === blockedDate.getMonth() &&
+                              date.getFullYear() === blockedDate.getFullYear()
+                            )
+                          }
                           className="rounded-md border-border [&]:text-foreground [&_*]:text-foreground [&_.rdp-caption_label]:text-foreground [&_.rdp-caption_label]:font-semibold [&_.rdp-nav_button]:text-foreground [&_.rdp-weekday]:text-muted-foreground [&_.rdp-weekday]:font-medium [&_.rdp-day_selected]:bg-primary [&_.rdp-day_selected]:text-primary-foreground [&_.rdp-day_today]:bg-accent [&_.rdp-day_today]:text-accent-foreground [&_.rdp-day:hover]:bg-accent [&_.rdp-day:hover]:text-accent-foreground [&_.rdp-day_disabled]:text-muted-foreground [&_.rdp-day_disabled]:opacity-50"
                           showOutsideDays={false}
                         />
@@ -205,16 +230,9 @@ export default function ContactoPage() {
                             <SelectValue placeholder="Elige una hora" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="9:00 AM">9:00 AM</SelectItem>
-                            <SelectItem value="10:00 AM">10:00 AM</SelectItem>
-                            <SelectItem value="11:00 AM">11:00 AM</SelectItem>
-                            <SelectItem value="12:00 PM">12:00 PM</SelectItem>
-                            <SelectItem value="1:00 PM">1:00 PM</SelectItem>
-                            <SelectItem value="2:00 PM">2:00 PM</SelectItem>
-                            <SelectItem value="3:00 PM">3:00 PM</SelectItem>
-                            <SelectItem value="4:00 PM">4:00 PM</SelectItem>
-                            <SelectItem value="5:00 PM">5:00 PM</SelectItem>
-                            <SelectItem value="6:00 PM">6:00 PM</SelectItem>
+                            <SelectItem value="10:00 - 11:00">10:00 - 11:00</SelectItem>
+                            <SelectItem value="17:00 - 18:00">17:00 - 18:00</SelectItem>
+                            <SelectItem value="18:00 - 19:00">18:00 - 19:00</SelectItem>
                           </SelectContent>
                         </Select>
                       </CardContent>
@@ -228,14 +246,14 @@ export default function ContactoPage() {
                       
                       <div className="space-y-6">
                         <div>
-                          <Label htmlFor="booking-nombre">Nombre completo *</Label>
+                          <Label htmlFor="booking-nombre">Empresa (o Nombre completo) *</Label>
                           <Input
                             id="booking-nombre"
                             required
                             value={bookingFormData.nombre}
                             onChange={(e) => setBookingFormData({...bookingFormData, nombre: e.target.value})}
                             className="h-12 mt-2"
-                            placeholder="Tu nombre completo"
+                            placeholder="Nombre de tu empresa o tu nombre completo"
                           />
                         </div>
 
@@ -272,10 +290,11 @@ export default function ContactoPage() {
                               <SelectValue placeholder="Elige un servicio" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="notion">Implementación de Notion</SelectItem>
-                              <SelectItem value="gohighlevel">Automatización con GoHighLevel</SelectItem>
-                              <SelectItem value="n8n">Workflows con n8n</SelectItem>
                               <SelectItem value="automatizacion-completa">Automatización completa</SelectItem>
+                              <SelectItem value="workflows-n8n">Workflows con N8N</SelectItem>
+                              <SelectItem value="gohighlevel">Automatizaciones con GoHighLevel</SelectItem>
+                              <SelectItem value="notion">Implementaciones en Notion</SelectItem>
+                              <SelectItem value="desarrollo-webs">Desarrollo de Webs</SelectItem>
                               <SelectItem value="consultoria-general">Consultoría general</SelectItem>
                             </SelectContent>
                           </Select>
@@ -294,22 +313,12 @@ export default function ContactoPage() {
                           />
                         </div>
 
-                        <div>
-                          <Label htmlFor="booking-experiencia">Experiencia previa (opcional)</Label>
-                          <Textarea
-                            id="booking-experiencia"
-                            value={bookingFormData.experiencia}
-                            onChange={(e) => setBookingFormData({...bookingFormData, experiencia: e.target.value})}
-                            rows={3}
-                            className="mt-2"
-                            placeholder="Describe tu experiencia previa..."
-                          />
-                        </div>
 
                         <div>
-                          <Label htmlFor="booking-ciudad">Ciudad (opcional)</Label>
+                          <Label htmlFor="booking-ciudad">Ciudad *</Label>
                           <Input
                             id="booking-ciudad"
+                            required
                             value={bookingFormData.ciudad}
                             onChange={(e) => setBookingFormData({...bookingFormData, ciudad: e.target.value})}
                             className="h-12 mt-2"
@@ -334,7 +343,7 @@ export default function ContactoPage() {
 
                         <Button
                           type="submit"
-                          className="w-full h-14 bg-brand-purple hover:bg-brand-purple/90 text-white text-lg font-semibold"
+                          className="w-full h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg font-semibold"
                         >
                           Confirmar Reserva
                           <ArrowRight className="ml-3 h-5 w-5" />
@@ -359,29 +368,45 @@ export default function ContactoPage() {
                   <CardContent className="p-8">
                     <h2 className="text-2xl font-bold mb-6">Envíanos un Mensaje</h2>
                     <form onSubmit={handleContactSubmit} className="space-y-6">
+                      <div>
+                        <label htmlFor="empresa" className="block text-sm font-medium mb-2">
+                          Empresa (o Nombre completo) *
+                        </label>
+                        <Input
+                          id="empresa"
+                          name="empresa"
+                          type="text"
+                          required
+                          value={contactFormData.empresa}
+                          onChange={handleContactInputChange}
+                          placeholder="Nombre de tu empresa o tu nombre completo"
+                        />
+                      </div>
+
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label htmlFor="nombre" className="block text-sm font-medium mb-2">
-                            Nombre *
+                          <label htmlFor="email" className="block text-sm font-medium mb-2">
+                            Email *
                           </label>
                           <Input
-                            id="nombre"
-                            name="nombre"
-                            type="text"
+                            id="email"
+                            name="email"
+                            type="email"
                             required
-                            value={contactFormData.nombre}
+                            value={contactFormData.email}
                             onChange={handleContactInputChange}
-                            placeholder="Tu nombre completo"
+                            placeholder="tu@empresa.com"
                           />
                         </div>
                         <div>
                           <label htmlFor="telefono" className="block text-sm font-medium mb-2">
-                            Teléfono
+                            Teléfono *
                           </label>
                           <Input
                             id="telefono"
                             name="telefono"
                             type="tel"
+                            required
                             value={contactFormData.telefono}
                             onChange={handleContactInputChange}
                             placeholder="+34 600 000 000"
@@ -390,50 +415,72 @@ export default function ContactoPage() {
                       </div>
 
                       <div>
-                        <label htmlFor="email" className="block text-sm font-medium mb-2">
-                          Email *
+                        <label htmlFor="ciudad" className="block text-sm font-medium mb-2">
+                          Ciudad *
                         </label>
                         <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          required
-                          value={contactFormData.email}
-                          onChange={handleContactInputChange}
-                          placeholder="tu@empresa.com"
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="empresa" className="block text-sm font-medium mb-2">
-                          Empresa
-                        </label>
-                        <Input
-                          id="empresa"
-                          name="empresa"
+                          id="ciudad"
+                          name="ciudad"
                           type="text"
-                          value={contactFormData.empresa}
+                          required
+                          value={contactFormData.ciudad}
                           onChange={handleContactInputChange}
-                          placeholder="Nombre de tu empresa"
+                          placeholder="Madrid, Barcelona, Valencia..."
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="mensaje" className="block text-sm font-medium mb-2">
-                          Mensaje *
+                        <label htmlFor="servicio" className="block text-sm font-medium mb-2">
+                          Servicio de interés *
+                        </label>
+                        <Select required value={contactFormData.servicio} onValueChange={(value) => handleContactSelectChange('servicio', value)}>
+                          <SelectTrigger className="h-12">
+                            <SelectValue placeholder="Elige un servicio" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="automatizacion-completa">Automatización completa</SelectItem>
+                            <SelectItem value="workflows-n8n">Workflows con N8N</SelectItem>
+                            <SelectItem value="gohighlevel">Automatizaciones con GoHighLevel</SelectItem>
+                            <SelectItem value="notion">Implementaciones en Notion</SelectItem>
+                            <SelectItem value="desarrollo-webs">Desarrollo de Webs</SelectItem>
+                            <SelectItem value="consultoria-general">Consultoría general</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      <div>
+                        <label htmlFor="objetivo" className="block text-sm font-medium mb-2">
+                          Objetivo que quieres lograr en tu empresa *
                         </label>
                         <Textarea
-                          id="mensaje"
-                          name="mensaje"
+                          id="objetivo"
+                          name="objetivo"
                           required
-                          rows={5}
-                          value={contactFormData.mensaje}
+                          rows={4}
+                          value={contactFormData.objetivo}
                           onChange={handleContactInputChange}
-                          placeholder="Cuéntanos sobre tu proyecto y cómo podemos ayudarte..."
+                          placeholder="Describe el objetivo principal que quieres alcanzar..."
                         />
                       </div>
 
-                      <Button type="submit" className="w-full h-12 bg-brand-purple hover:bg-brand-purple/90 text-white">
+                      <div>
+                        <label htmlFor="presupuesto" className="block text-sm font-medium mb-2">
+                          Presupuesto aproximado *
+                        </label>
+                        <Select required value={contactFormData.presupuesto} onValueChange={(value) => handleContactSelectChange('presupuesto', value)}>
+                          <SelectTrigger className="h-12">
+                            <SelectValue placeholder="Selecciona un rango" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="menos-1000">Menos de 1.000 €</SelectItem>
+                            <SelectItem value="1000-5000">1.000 - 5.000 €</SelectItem>
+                            <SelectItem value="5000-10000">5.000 - 10.000 €</SelectItem>
+                            <SelectItem value="mas-10000">Más de 10.000 €</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      <Button type="submit" className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
                         Enviar Mensaje
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>
@@ -451,22 +498,22 @@ export default function ContactoPage() {
                           <Mail className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                           <div>
                             <p className="font-medium">Email</p>
-                            <a href="mailto:info@iacosultora.net" className="text-primary hover:underline">
-                              info@iacosultora.net
+                            <a href="mailto:contacto@iaconsultora.net" className="text-primary hover:underline">
+                              contacto@iaconsultora.net
                             </a>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start gap-3">
                           <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                           <div>
-                            <p className="font-medium">Teléfono (Marcos - Business)</p>
+                            <p className="font-medium">Teléfono</p>
                             <a href="tel:+34916205922" className="text-primary hover:underline">
-                              +34 916 20 59 22
+                              +34 916 205 922
                             </a>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start gap-3">
                           <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                           <div>
@@ -488,7 +535,7 @@ export default function ContactoPage() {
                           </div>
                           <div>
                             <p className="font-medium">Consulta Inicial</p>
-                            <p className="text-sm text-muted-foreground">Llamada de 30 minutos para entender tus necesidades</p>
+                            <p className="text-sm text-muted-foreground">Llamada gratuita de 30 minutos para entender tus necesidades</p>
                           </div>
                         </div>
                         

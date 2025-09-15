@@ -164,7 +164,7 @@ export default function NotionPage() {
               </p>
               <div className="flex justify-center">
                 <Button className="h-11 px-8 py-4 text-lg" onClick={() => router.push('/contacto')}>
-                  Agendar Llamada
+                  Agendar Reunión
                   <Target className="ml-2 h-5 w-5" />
                 </Button>
               </div>
