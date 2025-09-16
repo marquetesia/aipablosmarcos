@@ -101,7 +101,7 @@ export default function AIConsultingLanding() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
               {/* Notion */}
-              <div className="card p-8">
+              <div className="card p-8 flex flex-col h-full">
                 <div className="w-16 h-16 mx-auto mb-6 rounded-lg bg-white border border-gray-200 flex items-center justify-center p-2">
                   <img src="/notion.png" alt="Notion" className="w-full h-full object-contain" />
                 </div>
@@ -124,14 +124,14 @@ export default function AIConsultingLanding() {
                     <span className="text-sm text-muted-foreground">Dashboards personalizados</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105" onClick={() => router.push('/notion')}>
+                <Button className="w-full bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105 mt-auto" onClick={() => router.push('/notion')}>
                   Explorar Notion
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
 
               {/* GoHighLevel */}
-              <div className="card p-8">
+              <div className="card p-8 flex flex-col h-full">
                 <div className="w-16 h-16 mx-auto mb-6 rounded-lg bg-white border border-gray-200 flex items-center justify-center p-2">
                   <img src="/gohighlevel.jpg" alt="GoHighLevel" className="w-full h-full object-contain rounded" />
                 </div>
@@ -154,14 +154,14 @@ export default function AIConsultingLanding() {
                     <span className="text-sm text-muted-foreground">Automatización de leads</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105" onClick={() => router.push('/gohighlevel')}>
-                  Explorar GoHighLevel
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-5 px-4 rounded-lg transition-colors duration-300 transform hover:scale-105 mt-auto" onClick={() => router.push('/gohighlevel')}>
+                  Explorar GHL
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
 
               {/* n8n */}
-              <div className="card p-8">
+              <div className="card p-8 flex flex-col h-full">
                 <div className="w-16 h-16 mx-auto mb-6 rounded-lg bg-white border border-gray-200 flex items-center justify-center p-2">
                   <img src="/n8n.png" alt="n8n" className="w-full h-full object-contain" />
                 </div>
@@ -184,14 +184,14 @@ export default function AIConsultingLanding() {
                     <span className="text-sm text-muted-foreground">Conexión entre sistemas</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105" onClick={() => router.push('/n8n')}>
+                <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105 mt-auto" onClick={() => router.push('/n8n')}>
                   Explorar n8n
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
 
               {/* Desarrollo de Webs */}
-              <div className="card p-8">
+              <div className="card p-8 flex flex-col h-full">
                 <div className="w-16 h-16 mx-auto mb-6 rounded-lg bg-white border border-gray-200 flex items-center justify-center p-2">
                   <Code className="w-8 h-8 text-green-600" />
                 </div>
@@ -214,7 +214,7 @@ export default function AIConsultingLanding() {
                     <span className="text-sm text-muted-foreground">Optimización SEO</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105" onClick={() => router.push('/contacto')}>
+                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105 mt-auto" onClick={() => router.push('/contacto')}>
                   Solicitar Desarrollo
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
