@@ -3,7 +3,7 @@ import './globals.css'
 import { Toaster } from 'sonner'
 
 export const metadata: Metadata = {
-  title: 'Pablos Marcos',
+  title: 'IAconsultora',
   description: 'Consultoría en IA, asesoría inmobiliaria y carsharing con Pablos Marcos',
   generator: 'Next.js',
   icons: {
