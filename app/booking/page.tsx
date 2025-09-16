@@ -251,7 +251,7 @@ export default function BookingPage() {
       <footer className="border-t border-border mt-12 pt-6">
         <div className="container mx-auto px-4 py-8">
           <div className="text-center text-muted-foreground">
-            <p>&copy; 2024 Pablos Marcos. Todos los derechos reservados.</p>
+            <p>&copy; 2024 Consultoría IA. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
