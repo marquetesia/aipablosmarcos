@@ -132,7 +132,7 @@ export default function SobreNosotros() {
                       />
                     </div>
                     <h2 className="text-2xl font-bold mb-2">Pablos Tselioudis Garmendia</h2>
-                    <p className="text-primary font-medium">Programmer & AI Specialist</p>
+                    <p className="text-primary font-medium">AI Specialist and Web Developer</p>
                     <p className="text-sm text-muted-foreground mb-4">Experto en desarrollo de Web, machine learning e implementación de IA</p>
                   </div>
 
@@ -142,7 +142,7 @@ export default function SobreNosotros() {
                       <div>
                         <p className="font-medium text-sm">Educación</p>
                         <p className="text-sm text-muted-foreground">Data Science & Engineering - UC3M</p>
-                        <p className="text-sm text-muted-foreground">Master's in AI - VU Amsterdam (2025)</p>
+                        <p className="text-sm text-muted-foreground">Master's in AI - VU Amsterdam</p>
                         <p className="text-sm text-muted-foreground">Exchange - Northeastern University</p>
                       </div>
                     </div>
@@ -166,15 +166,6 @@ export default function SobreNosotros() {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-3">
-                      <Code className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-sm">Especialidades</p>
-                        <p className="text-sm text-muted-foreground">Python, R, SQL, Machine Learning</p>
-                        <p className="text-sm text-muted-foreground">Deep Learning, Computer Vision</p>
-                        <p className="text-sm text-muted-foreground">LangChain, OpenAI API</p>
-                      </div>
-                    </div>
                   </div>
 
                   <div className="flex gap-2 mt-auto">
