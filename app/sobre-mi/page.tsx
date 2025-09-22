@@ -31,7 +31,7 @@ export default function SobreNosotros() {
                 Sobre <span className="text-primary">Nosotros</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Somos Pablos y Marcos, dos especialistas apasionados por transformar empresas 
+                Somos Marcos y Pablos, dos especialistas apasionados por transformar empresas
                 a través de la automatización e inteligencia artificial.
               </p>
             </div>
@@ -44,75 +44,6 @@ export default function SobreNosotros() {
         <section className="py-20 bg-secondary">
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
-              
-              {/* Pablos Profile */}
-              <Card className="overflow-hidden h-full">
-                <CardContent className="p-8 h-full flex flex-col">
-                  <div className="text-center mb-6">
-                    <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 border-4 border-gradient-to-br from-blue-500 to-purple-600">
-                      <img
-                        src="/pablos.jpeg"
-                        alt="Pablos Tselioudis"
-                        className="w-full h-full object-cover"
-                        style={{ objectPosition: 'center 18%' }}
-                      />
-                    </div>
-                    <h2 className="text-2xl font-bold mb-2">Pablos Tselioudis Garmendia</h2>
-                    <p className="text-primary font-medium">Programmer & AI Specialist</p>
-                    <p className="text-sm text-muted-foreground mb-4">Experto en desarrollo de Web, machine learning e implementación de IA</p>
-                  </div>
-                  
-                  <div className="space-y-4 mb-6 flex-grow">
-                    <div className="flex items-start gap-3">
-                      <GraduationCap className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-sm">Educación</p>
-                        <p className="text-sm text-muted-foreground">Data Science & Engineering - UC3M</p>
-                        <p className="text-sm text-muted-foreground">Master's in AI - VU Amsterdam (2025)</p>
-                        <p className="text-sm text-muted-foreground">Exchange - Northeastern University</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start gap-3">
-                      <Briefcase className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-sm">Experiencia</p>
-                        <p className="text-sm text-muted-foreground">AI Intern - Toyota Insurance</p>
-                        <p className="text-sm text-muted-foreground">ML Engineer - Motix Connected</p>
-                        <p className="text-sm text-muted-foreground">Árbitro Oficial - Federación Madrid</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <Award className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-sm">Logros</p>
-                        <p className="text-sm text-muted-foreground">Beca de Excelencia Comunidad de Madrid</p>
-                        <p className="text-sm text-muted-foreground">Dean's List - Khoury College</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start gap-3">
-                      <Code className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-sm">Especialidades</p>
-                        <p className="text-sm text-muted-foreground">Python, R, SQL, Machine Learning</p>
-                        <p className="text-sm text-muted-foreground">Deep Learning, Computer Vision</p>
-                        <p className="text-sm text-muted-foreground">LangChain, OpenAI API</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-2 mt-auto">
-                    <a href="mailto:pablos@iaconsultora.net" className="w-full">
-                      <Button variant="outline" className="w-full text-sm">
-                        <Mail className="h-4 w-4 mr-2" />
-                        Email Pablos
-                      </Button>
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
 
               {/* Marcos Profile */}
               <Card className="overflow-hidden h-full">
@@ -145,8 +76,8 @@ export default function SobreNosotros() {
                       <Briefcase className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                       <div>
                         <p className="font-medium text-sm">Experiencia Actual</p>
-                        <p className="text-sm text-muted-foreground">Toyota Seguros</p>
-                        <p className="text-sm text-muted-foreground">Profesor de Tenis</p>
+                        <p className="text-sm text-muted-foreground">CEO y fundador de IAConsultora</p>
+                        <p className="text-sm text-muted-foreground">Fundador y mediador de bienes raíz</p>
                       </div>
                     </div>
 
@@ -182,6 +113,75 @@ export default function SobreNosotros() {
                       <Button variant="outline" className="w-full">
                         <Phone className="h-4 w-4 mr-2" />
                         Llamar
+                      </Button>
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Pablos Profile */}
+              <Card className="overflow-hidden h-full">
+                <CardContent className="p-8 h-full flex flex-col">
+                  <div className="text-center mb-6">
+                    <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 border-4 border-gradient-to-br from-blue-500 to-purple-600">
+                      <img
+                        src="/pablos.jpeg"
+                        alt="Pablos Tselioudis"
+                        className="w-full h-full object-cover"
+                        style={{ objectPosition: 'center 18%' }}
+                      />
+                    </div>
+                    <h2 className="text-2xl font-bold mb-2">Pablos Tselioudis Garmendia</h2>
+                    <p className="text-primary font-medium">Programmer & AI Specialist</p>
+                    <p className="text-sm text-muted-foreground mb-4">Experto en desarrollo de Web, machine learning e implementación de IA</p>
+                  </div>
+
+                  <div className="space-y-4 mb-6 flex-grow">
+                    <div className="flex items-start gap-3">
+                      <GraduationCap className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                      <div>
+                        <p className="font-medium text-sm">Educación</p>
+                        <p className="text-sm text-muted-foreground">Data Science & Engineering - UC3M</p>
+                        <p className="text-sm text-muted-foreground">Master's in AI - VU Amsterdam (2025)</p>
+                        <p className="text-sm text-muted-foreground">Exchange - Northeastern University</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <Briefcase className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                      <div>
+                        <p className="font-medium text-sm">Experiencia</p>
+                        <p className="text-sm text-muted-foreground">AI Intern - Toyota Insurance</p>
+                        <p className="text-sm text-muted-foreground">ML Engineer - Motix Connected</p>
+                        <p className="text-sm text-muted-foreground">Árbitro Oficial - Federación Madrid</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <Award className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                      <div>
+                        <p className="font-medium text-sm">Logros</p>
+                        <p className="text-sm text-muted-foreground">Beca de Excelencia Comunidad de Madrid</p>
+                        <p className="text-sm text-muted-foreground">Dean's List - Khoury College</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <Code className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                      <div>
+                        <p className="font-medium text-sm">Especialidades</p>
+                        <p className="text-sm text-muted-foreground">Python, R, SQL, Machine Learning</p>
+                        <p className="text-sm text-muted-foreground">Deep Learning, Computer Vision</p>
+                        <p className="text-sm text-muted-foreground">LangChain, OpenAI API</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2 mt-auto">
+                    <a href="mailto:pablos@iaconsultora.net" className="w-full">
+                      <Button variant="outline" className="w-full text-sm">
+                        <Mail className="h-4 w-4 mr-2" />
+                        Email Pablos
                       </Button>
                     </a>
                   </div>

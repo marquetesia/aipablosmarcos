@@ -28,7 +28,7 @@ export default function ServiciosPage() {
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Button className="btn-outline border font-semibold rounded-xl hover:bg-secondary h-10 px-5" onClick={() => router.push('/booking')}>
-                  Hablar conmigo
+                  Hablar con nosotros
                 </Button>
               </div>
             </div>
