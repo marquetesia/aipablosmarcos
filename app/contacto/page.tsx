@@ -14,6 +14,7 @@ import { db } from "@/lib/firebase"
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore"
 import { toast } from "sonner"
 import NavPill from "@/components/NavPill"
+import Footer from "@/components/Footer"
 
 export default function ContactoPage() {
   const [date, setDate] = useState<Date | undefined>(undefined);
@@ -611,7 +612,7 @@ export default function ContactoPage() {
                           <div>
                             <p className="font-medium">Teléfono</p>
                             <a href="tel:+34916205922" className="text-primary hover:underline">
-                              +34 916 205 922
+                              +34 916 20 59 22
                             </a>
                           </div>
                         </div>
@@ -756,14 +757,7 @@ export default function ContactoPage() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border mt-12 pt-6">
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-center text-muted-foreground">
-            <p>&copy; 2024 Pablos & Marcos - Consultoría IA. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

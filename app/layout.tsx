@@ -4,7 +4,7 @@ import { Toaster } from 'sonner'
 
 export const metadata: Metadata = {
   title: 'IAconsultora',
-  description: 'Consultoría en IA, asesoría inmobiliaria y carsharing',
+  description: 'Consultoría en IA, automatización y desarrollo web',
   generator: 'Next.js',
   icons: {
     icon: '/favicon1.ico',

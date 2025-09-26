@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, BookOpen, Users, FileText, ChartColumn, CircleCheck, Target } from "lucide-react"
 import { useRouter } from "next/navigation"
 import NavPill from "@/components/NavPill"
+import Footer from "@/components/Footer"
 
 export default function NotionPage() {
   const router = useRouter();
@@ -172,6 +173,8 @@ export default function NotionPage() {
           </div>
         </section>
       </main>
+
+      <Footer />
     </div>
   )
 }

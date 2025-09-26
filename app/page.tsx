@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Sparkles, Brain, Zap, ArrowRight, Phone, Code } from "lucide-react"
 import { useRouter } from "next/navigation"
 import NavPill from "@/components/NavPill"
+import Footer from "@/components/Footer"
 
 export default function AIConsultingLanding() {
   const router = useRouter();
@@ -214,8 +215,8 @@ export default function AIConsultingLanding() {
                     <span className="text-sm text-muted-foreground">Optimización SEO</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105 mt-auto" onClick={() => router.push('/contacto')}>
-                  Solicitar Desarrollo
+                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105 mt-auto" onClick={() => router.push('/desarrollo-web')}>
+                  Explorar
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -246,14 +247,7 @@ export default function AIConsultingLanding() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border mt-12 pt-6">
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-center text-muted-foreground">
-            <p>&copy; 2024 Consultoría IA. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

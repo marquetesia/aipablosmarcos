@@ -4,6 +4,8 @@ import { useState } from "react"
 import { Download, FileText, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import NavPill from "@/components/NavPill"
+import Footer from "@/components/Footer"
 
 export default function PresentacionPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -21,7 +23,8 @@ export default function PresentacionPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-16">
+      <NavPill />
+      <div className="container mx-auto px-4 py-16 pt-24">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
@@ -95,6 +98,8 @@ export default function PresentacionPage() {
           </Card>
         </div>
       </div>
+
+      <Footer />
     </div>
   )
 }

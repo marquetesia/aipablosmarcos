@@ -15,6 +15,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import NavPill from "@/components/NavPill";
+import Footer from "@/components/Footer";
 
 export default function BookingPage() {
   const router = useRouter();
@@ -175,8 +176,7 @@ export default function BookingPage() {
                         <SelectValue placeholder="Elige un servicio" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="asesoria-inmobiliaria">Asesoría inmobiliaria</SelectItem>
-                        <SelectItem value="carsharing">Carsharing y rentabilidad de coches</SelectItem>
+                        <SelectItem value="desarrollo-web">Desarrollo de webs</SelectItem>
                         <SelectItem value="automatizacion-ia">Automatización con IA para tu negocio</SelectItem>
                       </SelectContent>
                     </Select>
@@ -208,7 +208,7 @@ export default function BookingPage() {
                   </div>
 
                   <div>
-                    <Label htmlFor="ciudad" className="text-foreground font-medium">7. ¿En qué ciudad vives? (para carsharing o inmobiliaria)</Label>
+                    <Label htmlFor="ciudad" className="text-foreground font-medium">7. ¿En qué ciudad vives?</Label>
                     <Input
                       id="ciudad"
                       value={formData.ciudad}
@@ -247,14 +247,7 @@ export default function BookingPage() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border mt-12 pt-6">
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-center text-muted-foreground">
-            <p>&copy; 2024 Consultoría IA. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 } 

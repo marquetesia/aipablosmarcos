@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Brain, Zap, Sparkles, ArrowRight, Phone } from "lucide-react"
 import { useRouter } from "next/navigation"
 import NavPill from "@/components/NavPill"
+import Footer from "@/components/Footer"
 
 export default function ServiciosPage() {
   const router = useRouter();
@@ -332,14 +333,7 @@ export default function ServiciosPage() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border mt-12 pt-6">
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-center text-muted-foreground">
-            <p>&copy; 2024 Consultoría IA. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

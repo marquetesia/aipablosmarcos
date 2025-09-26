@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, Zap, Database, Clock, BarChart3, CircleCheck, Target, Code, GitBranch, RefreshCw, Send, Shield, Globe, Cpu } from "lucide-react"
 import { useRouter } from "next/navigation"
 import NavPill from "@/components/NavPill"
+import Footer from "@/components/Footer"
 
 export default function N8nPage() {
   const router = useRouter();
@@ -275,6 +276,8 @@ export default function N8nPage() {
           </div>
         </section>
       </main>
+
+      <Footer />
     </div>
   )
 }

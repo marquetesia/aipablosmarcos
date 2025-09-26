@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, Target, Users, TrendingUp, BarChart3, CircleCheck, Phone, MessageCircle, Monitor, Calendar, GitBranch, PieChart } from "lucide-react"
 import { useRouter } from "next/navigation"
 import NavPill from "@/components/NavPill"
+import Footer from "@/components/Footer"
 
 export default function GoHighLevelPage() {
   const router = useRouter();
@@ -220,6 +221,8 @@ export default function GoHighLevelPage() {
           </div>
         </section>
       </main>
+
+      <Footer />
     </div>
   )
 }
