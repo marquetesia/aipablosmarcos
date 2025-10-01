@@ -72,9 +72,9 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-6 text-white">RECURSOS</h3>
             <ul className="space-y-3">
               <li>
-                <span className="text-gray-500 cursor-not-allowed">
-                  Blog (próximamente)
-                </span>
+                <Link href="/blog" className="text-gray-300 hover:text-white transition-colors underline">
+                  Blog
+                </Link>
               </li>
               <li>
                 <span className="text-gray-500 cursor-not-allowed">

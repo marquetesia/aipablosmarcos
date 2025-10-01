@@ -2,10 +2,11 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Calendar, User, ArrowRight, BookOpen, Tag } from "lucide-react"
+import { Calendar, ArrowRight, Tag } from "lucide-react"
 import { useRouter } from "next/navigation"
 import NavPill from "@/components/NavPill"
 import Footer from "@/components/Footer"
+import NewsletterSubscribe from "@/components/NewsletterSubscribe"
 
 export default function Blog() {
   const router = useRouter()
@@ -13,67 +14,33 @@ export default function Blog() {
   const blogPosts = [
     {
       id: 1,
-      title: "Cómo la IA está transformando el sector inmobiliario en 2025",
-      excerpt: "Descubre las últimas tendencias en inteligencia artificial aplicada al mercado inmobiliario y cómo pueden beneficiar tu inversión.",
-      category: "IA & Inmobiliario",
-      date: "15 Marzo 2025",
-      author: "Pablos Marcos",
-      readTime: "5 min",
-      image: "/blog/ai-real-estate.jpg"
+      title: "Inteligencia artificial para pymes: Cómo automatizar procesos, ahorrar tiempo y ganar ventaja competitiva",
+      excerpt: "Descubre cómo aplicar inteligencia artificial en tu pyme para automatizar tareas repetitivas, ahorrar tiempo y mejorar la productividad con herramientas prácticas y pasos claros.",
+      category: "Transformación Empresarial con IA",
+      date: "29 Septiembre 2024",
+      image: "/IAparapymes.png",
+      slug: "inteligencia-artificial-para-pymes"
     },
     {
       id: 2,
-      title: "Automatización de procesos con n8n: Guía completa para principiantes",
-      excerpt: "Aprende a automatizar tus procesos empresariales con n8n desde cero. Incluye ejemplos prácticos y casos de uso reales.",
-      category: "Automatización",
-      date: "12 Marzo 2025",
-      author: "Pablos Marcos",
-      readTime: "8 min",
-      image: "/blog/n8n-automation.jpg"
-    },
-    {
-      id: 3,
-      title: "GoHighLevel vs. HubSpot: Comparativa completa para empresas",
-      excerpt: "Análisis detallado de las dos plataformas CRM más populares del mercado. Descubre cuál se adapta mejor a tu negocio.",
-      category: "CRM & Marketing",
-      date: "8 Marzo 2025",
-      author: "Pablos Marcos",
-      readTime: "6 min",
-      image: "/blog/crm-comparison.jpg"
-    },
-    {
-      id: 4,
-      title: "Guía completa para crear tu primera página web empresarial",
-      excerpt: "Todo lo que necesitas saber para desarrollar un sitio web que convierta visitantes en clientes potenciales.",
-      category: "Desarrollo Web",
-      date: "5 Marzo 2025",
-      author: "Pablos Marcos",
-      readTime: "7 min",
-      image: "/blog/web-development.jpg"
-    },
-    {
-      id: 5,
-      title: "Notion para empresas: Cómo crear un sistema de gestión completo",
-      excerpt: "Tutorial paso a paso para implementar Notion como tu centro de operaciones empresarial. Incluye plantillas descargables.",
-      category: "Productividad",
-      date: "1 Marzo 2025",
-      author: "Pablos Marcos",
-      readTime: "10 min",
-      image: "/blog/notion-business.jpg"
-    },
-    {
-      id: 6,
-      title: "ROI en proyectos de IA: Cómo medir el éxito de tu implementación",
-      excerpt: "Métricas clave y metodologías para evaluar el retorno de inversión en proyectos de inteligencia artificial empresarial.",
-      category: "IA & Business",
-      date: "25 Febrero 2025",
-      author: "Pablos Marcos",
-      readTime: "6 min",
-      image: "/blog/ai-roi.jpg"
+      title: "Reuniones sin actas manuales: así funcionan los resúmenes automáticos con IA",
+      excerpt: "Implementa resúmenes automáticos con IA para automatizar tus reuniones comerciales. Mejora el seguimiento de ventas, ahorra tiempo y aumenta la conversión.",
+      category: "Ventas & Clientes",
+      date: "27 Septiembre 2024",
+      image: "/reuniones.png",
+      slug: "reuniones-resumenes-automaticos-ia"
     }
   ]
 
-  const categories = ["Todos", "IA & Business", "Automatización", "CRM & Marketing", "Movilidad", "Productividad", "Inmobiliario"]
+  const categories = [
+    "Todos",
+    "Automatización de Procesos",
+    "Aplicaciones Internas & Herramientas",
+    "Ventas & Clientes",
+    "Conocimiento Corporativo",
+    "Desarrollo Digital",
+    "Transformación Empresarial con IA"
+  ]
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -113,28 +80,56 @@ export default function Blog() {
           </div>
         </section>
 
-        {/* Coming Soon Section */}
-        <section className="bg-white py-32">
+        {/* Blog Posts Grid */}
+        <section className="bg-white py-16">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="w-24 h-24 mx-auto mb-8 rounded-full bg-secondary flex items-center justify-center">
-                <BookOpen className="w-12 h-12 text-muted-foreground" />
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Blog Próximamente
-              </h2>
-              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Estamos preparando contenido de alta calidad sobre IA, automatización y mejores prácticas empresariales.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  className="btn-outline h-12 px-8"
-                  onClick={() => router.push('/contacto')}
-                >
-                  Contáctanos para Más Info
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogPosts.map((post) => (
+                <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        {post.date}
+                      </div>
+                    </div>
+                    <div className="mb-3">
+                      <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium bg-brand-purple/10 text-brand-purple rounded-full">
+                        <Tag className="w-3 h-3" />
+                        {post.category}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground mb-3 line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-4 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex items-center justify-end">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-brand-purple hover:text-brand-purple/80 p-0"
+                        onClick={() => {
+                          if (post.slug) {
+                            router.push(`/blog/${post.slug}`)
+                          }
+                        }}
+                      >
+                        Leer más
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
@@ -149,16 +144,7 @@ export default function Blog() {
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Suscríbete a nuestro newsletter y recibe los últimos insights sobre IA y automatización
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="Tu email"
-                  className="flex-1 px-4 py-3 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-brand-purple"
-                />
-                <Button className="bg-brand-purple hover:bg-brand-purple/90 text-white px-6">
-                  Suscribirse
-                </Button>
-              </div>
+              <NewsletterSubscribe />
             </div>
           </div>
         </section>
