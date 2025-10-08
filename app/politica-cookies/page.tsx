@@ -271,7 +271,7 @@ export default function PoliticaCookies() {
                   <div className="space-y-2 text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <Mail className="w-4 h-4" />
-                      <span>Email: cookies@iaconsultora.com</span>
+                      <span>Email: cookies@iaconsultora.net</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Phone className="w-4 h-4" />
@@ -279,7 +279,7 @@ export default function PoliticaCookies() {
                     </div>
                     <div className="flex items-center gap-2">
                       <MapPin className="w-4 h-4" />
-                      <span>Dirección: Av. de Europa, 19, 28108 Madrid, España</span>
+                      <span>Dirección: C. del Mirador, 6, 28860, Madrid, Spain, España</span>
                     </div>
                   </div>
                 </div>
@@ -292,7 +292,7 @@ export default function PoliticaCookies() {
                   </p>
                   <div className="flex items-center gap-2 text-brand-purple">
                     <Mail className="w-4 h-4" />
-                    <span className="font-semibold">cookies@iaconsultora.com</span>
+                    <span className="font-semibold">cookies@iaconsultora.net</span>
                   </div>
                 </div>
               </div>

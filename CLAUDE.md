@@ -638,9 +638,9 @@ export function generateMetadata(): Metadata {
 ### Official Business Information
 - **Company**: IAConsultora
 - **Website**: IAConsultora.net
-- **Email**: info@iaconsultora.com
+- **Email**: info@iaconsultora.net
 - **Phone**: (+34) 916 20 59 22
-- **Address**: Av. de Europa, 19, 28108 Madrid-España
+- **Address**: C. del Mirador, 6, 28860, Madrid, Spain-España
 - **Country**: España (Spain)
 - **Language**: Spanish (primary business language)
 

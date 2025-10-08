@@ -99,8 +99,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-brand-purple flex-shrink-0" />
-                <a href="mailto:info@iaconsultora.com" className="text-gray-300 hover:text-white transition-colors">
-                  info@iaconsultora.com
+                <a href="mailto:info@iaconsultora.net" className="text-gray-300 hover:text-white transition-colors">
+                  info@iaconsultora.net
                 </a>
               </div>
               <div className="flex items-start space-x-3">

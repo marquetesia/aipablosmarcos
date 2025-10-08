@@ -154,7 +154,6 @@ export default function SobreNosotros() {
                         <p className="font-medium text-sm">Experiencia</p>
                         <p className="text-sm text-muted-foreground">AI Intern - Toyota Insurance</p>
                         <p className="text-sm text-muted-foreground">ML Engineer - Motix Connected</p>
-                        <p className="text-sm text-muted-foreground">Árbitro Oficial - Federación Madrid</p>
                       </div>
                     </div>
 
