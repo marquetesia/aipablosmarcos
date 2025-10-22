@@ -394,7 +394,7 @@ h1,h2,h3 { @apply tracking-tight; }
 ├── gohighlevel.jpg           # GoHighLevel service image
 ├── pablos.jpeg               # Personal photo 1
 ├── marcos.jpeg               # Personal photo 2
-├── pablosmarcos.jpeg         # Personal photo 3
+├── pablosmarcos.png         # Personal photo 3
 ├── hero-bg.png               # Hero background
 ├── modelogordo.png           # Model/design image
 ├── Presentación.pdf          # Company presentation

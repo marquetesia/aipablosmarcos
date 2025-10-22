@@ -22,7 +22,7 @@ export default function SobreNosotros() {
               <div className="flex justify-center mb-8">
                 <div className="w-40 h-40 rounded-2xl overflow-hidden border-4 border-brand-purple shadow-lg">
                   <img
-                    src="/pablosmarcos.jpeg"
+                    src="/pablosmarcos.png"
                     alt="Pablos y Marcos"
                     className="w-full h-full object-cover"
                   />

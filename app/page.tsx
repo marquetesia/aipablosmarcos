@@ -23,7 +23,7 @@ export default function AIConsultingLanding() {
                 <div className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-2xl overflow-hidden border-4 border-brand-purple p-1">
                   <div className="w-full h-full rounded-2xl overflow-hidden">
                     <img
-                      src="/pablosmarcos.jpeg"
+                      src="/pablosmarcos.png"
                       alt="Pablos y Marcos"
                       className="w-full h-full object-cover"
                     />
