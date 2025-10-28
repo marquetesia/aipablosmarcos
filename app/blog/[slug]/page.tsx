@@ -361,8 +361,9 @@ export function generateStaticParams() {
 }
 
 // Generate metadata for SEO
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const post = blogPosts[params.slug as keyof typeof blogPosts]
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = blogPosts[slug as keyof typeof blogPosts]
 
   if (!post) {
     return {
@@ -385,13 +386,13 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 }
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = params
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { slug } = await params
 
   const post = blogPosts[slug as keyof typeof blogPosts]
 
