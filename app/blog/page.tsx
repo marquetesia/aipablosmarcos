@@ -14,6 +14,15 @@ export default function Blog() {
   const blogPosts = [
     {
       id: 1,
+      title: "Automatización de marketing con inteligencia artificial: cómo aumentar ventas y ahorrar tiempo en tu pyme",
+      excerpt: "Aprende cómo aplicar inteligencia artificial en marketing para automatizar tareas, mejorar conversiones y ahorrar tiempo. Guía práctica para pymes.",
+      category: "Ventas & Clientes",
+      date: "28 Octubre 2025",
+      image: "/ventas.png",
+      slug: "automatizacion-marketing-inteligencia-artificial"
+    },
+    {
+      id: 2,
       title: "Inteligencia artificial para pymes: Cómo automatizar procesos, ahorrar tiempo y ganar ventaja competitiva",
       excerpt: "Descubre cómo aplicar inteligencia artificial en tu pyme para automatizar tareas repetitivas, ahorrar tiempo y mejorar la productividad con herramientas prácticas y pasos claros.",
       category: "Transformación Empresarial con IA",
@@ -22,7 +31,7 @@ export default function Blog() {
       slug: "inteligencia-artificial-para-pymes"
     },
     {
-      id: 2,
+      id: 3,
       title: "Reuniones sin actas manuales: así funcionan los resúmenes automáticos con IA",
       excerpt: "Implementa resúmenes automáticos con IA para automatizar tus reuniones comerciales. Mejora el seguimiento de ventas, ahorra tiempo y aumenta la conversión.",
       category: "Ventas & Clientes",

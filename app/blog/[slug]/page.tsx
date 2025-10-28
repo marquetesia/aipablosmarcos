@@ -8,6 +8,123 @@ import Link from "next/link"
 import { Metadata } from "next"
 
 const blogPosts = {
+  'automatizacion-marketing-inteligencia-artificial': {
+    title: "Automatización de marketing con inteligencia artificial: cómo aumentar ventas y ahorrar tiempo en tu pyme",
+    excerpt: "Aprende cómo aplicar inteligencia artificial en marketing para automatizar tareas, mejorar conversiones y ahorrar tiempo. Guía práctica para pymes.",
+    category: "Ventas & Clientes",
+    date: "28 Octubre 2025",
+    image: "/ventas.png",
+    content: `
+<h2 id="la-nueva-era-del-marketing-inteligente">La nueva era del marketing inteligente</h2>
+
+<p>El marketing digital ha cambiado radicalmente. Lo que antes requería horas de trabajo manual —enviar correos, segmentar audiencias, analizar resultados— hoy puede automatizarse con precisión quirúrgica gracias a la inteligencia artificial.</p>
+
+<p>En IAConsultora.net ayudamos a pymes a implementar automatización de marketing con IA para convertir datos dispersos en acciones concretas: más leads, más conversiones y más tiempo libre para los equipos.</p>
+
+<h2 id="que-puede-automatizar-la-ia-en-marketing">Qué puede automatizar la IA en marketing</h2>
+
+<p>La inteligencia artificial no sustituye al equipo de marketing: lo potencia. Estas son algunas de las áreas donde más impacto genera:</p>
+
+<p><strong>Email marketing inteligente:</strong> segmenta automáticamente tus contactos, predice el mejor momento para enviar correos y personaliza el contenido según el comportamiento del cliente.</p>
+
+<p><strong>Gestión de redes sociales:</strong> herramientas como Buffer con IA o Metricool AI Assistant programan publicaciones, recomiendan horarios óptimos y hasta generan textos atractivos.</p>
+
+<p><strong>Publicidad optimizada:</strong> la IA ajusta pujas, analiza resultados en tiempo real y redistribuye presupuesto hacia los anuncios con mejor ROI.</p>
+
+<p><strong>Chatbots de atención al cliente:</strong> responden preguntas frecuentes, recopilan datos de contacto y califican leads antes de que intervenga el equipo humano.</p>
+
+<p><strong>Análisis predictivo:</strong> anticipa qué clientes tienen más probabilidad de comprar o abandonar, y permite actuar antes de que ocurra.</p>
+
+<h2 id="herramientas-de-automatizacion-de-marketing-con-ia-para-pymes">Herramientas de automatización de marketing con IA para pymes</h2>
+
+<p>En IAConsultora.net hemos probado decenas de soluciones y seleccionamos las más efectivas para empresas pequeñas y medianas:</p>
+
+<h3>HubSpot + IA</h3>
+
+<p>Permite automatizar campañas completas desde correos hasta seguimiento de leads, con análisis automático de rendimiento. Ideal para equipos de ventas y marketing integrados.</p>
+
+<h3>MailerLite + ChatGPT</h3>
+
+<p>Combina segmentación automática con generación de texto personalizada para cada público. Perfecto para newsletters con tono humano pero escalables.</p>
+
+<h3>Metricool / Buffer AI</h3>
+
+<p>Programan publicaciones, recomiendan hashtags y horarios de máxima visibilidad. Ahorra horas semanales a cualquier community manager.</p>
+
+<h3>Notion AI + Zapier</h3>
+
+<p>Automatiza la creación de contenidos y reportes: cada nuevo post, cliente o campaña puede generar automáticamente tareas, informes o briefs internos.</p>
+
+<h3>Google Ads con Smart Bidding</h3>
+
+<p>Ajusta automáticamente las pujas según la probabilidad de conversión, maximizando resultados sin supervisión constante.</p>
+
+<h2 id="como-implementar-la-automatizacion-paso-a-paso">Cómo implementar la automatización paso a paso</h2>
+
+<h3>1. Diagnóstico</h3>
+
+<p>Identifica las tareas más repetitivas o de menor valor añadido: correos, seguimiento de leads, creación de reportes.</p>
+
+<h3>2. Elección de herramientas</h3>
+
+<p>Selecciona una o dos plataformas según tu presupuesto y ecosistema (Microsoft, Google, etc.).</p>
+
+<h3>3. Creación de flujos</h3>
+
+<p>Diseña un flujo simple: por ejemplo, cada vez que llega un lead desde tu web → envía un email → lo agrega al CRM → notifica a ventas.</p>
+
+<h3>4. Integración y pruebas</h3>
+
+<p>Verifica que los datos fluyan correctamente entre herramientas.</p>
+
+<h3>5. Escalado</h3>
+
+<p>Cuando los resultados son positivos (más leads, menos tiempo invertido), amplía a más canales o procesos.</p>
+
+<h2 id="ejemplo-real-de-8-horas-a-30-minutos">Ejemplo real: de 8 horas a 30 minutos</h2>
+
+<p>Una pyme del sector servicios dedicaba 8 horas semanales a enviar correos de seguimiento a clientes potenciales.</p>
+
+<p>Implementamos un flujo con MailerLite + Zapier + ChatGPT que redacta y envía correos personalizados automáticamente.</p>
+
+<p>Resultado: el tiempo de gestión bajó a 30 minutos y la tasa de respuesta subió un 25 %.</p>
+
+<h2 id="por-que-la-automatizacion-de-marketing-es-una-ventaja-competitiva">Por qué la automatización de marketing es una ventaja competitiva</h2>
+
+<p>En un entorno donde cada empresa compite por atención, la rapidez y consistencia son clave. La IA permite ejecutar estrategias que antes solo eran posibles en grandes corporaciones.</p>
+
+<p>Las pymes que adoptan automatización de marketing con inteligencia artificial no solo ahorran tiempo: ganan precisión, coherencia y escalabilidad.</p>
+
+<h2 id="preguntas-frecuentes-sobre-automatizacion-de-marketing-con-ia">Preguntas frecuentes sobre automatización de marketing con IA</h2>
+
+<p><strong>¿Necesito un departamento de marketing completo para usar IA?</strong><br>
+No. Con una estrategia adecuada y nuestras guías, cualquier pyme puede implementar automatizaciones sin gran estructura.</p>
+
+<p><strong>¿Cuánto cuesta empezar?</strong><br>
+Muchas herramientas ofrecen planes gratuitos o desde 20 € al mes. El ROI suele verse en menos de tres meses.</p>
+
+<p><strong>¿La IA sustituirá al marketing humano?</strong><br>
+No. La IA ejecuta, pero las ideas y la estrategia siguen siendo humanas. La clave está en la colaboración.</p>
+
+<p><strong>¿Qué pasa si ya tengo herramientas como Mailchimp o Google Ads?</strong><br>
+Podemos integrarlas con IA sin cambiar tu ecosistema.</p>
+
+<p><strong>¿Cómo sé si mi automatización funciona?</strong><br>
+Definimos KPIs claros (tiempo ahorrado, leads generados, tasa de conversión) y medimos resultados cada semana.</p>
+    `,
+    metaTitle: "Automatización de marketing con IA | Cómo aumentar ventas en tu pyme",
+    metaDescription: "Aprende cómo aplicar inteligencia artificial en marketing para automatizar tareas, mejorar conversiones y ahorrar tiempo. Guía práctica para pymes.",
+    keywords: "automatización de marketing con inteligencia artificial",
+    tableOfContents: [
+      { id: "la-nueva-era-del-marketing-inteligente", title: "La nueva era del marketing inteligente" },
+      { id: "que-puede-automatizar-la-ia-en-marketing", title: "Qué puede automatizar la IA en marketing" },
+      { id: "herramientas-de-automatizacion-de-marketing-con-ia-para-pymes", title: "Herramientas de automatización de marketing con IA para pymes" },
+      { id: "como-implementar-la-automatizacion-paso-a-paso", title: "Cómo implementar la automatización paso a paso" },
+      { id: "ejemplo-real-de-8-horas-a-30-minutos", title: "Ejemplo real: de 8 horas a 30 minutos" },
+      { id: "por-que-la-automatizacion-de-marketing-es-una-ventaja-competitiva", title: "Por qué la automatización de marketing es una ventaja competitiva" },
+      { id: "preguntas-frecuentes-sobre-automatizacion-de-marketing-con-ia", title: "Preguntas frecuentes sobre automatización de marketing con IA" }
+    ]
+  },
   'inteligencia-artificial-para-pymes': {
     title: "Inteligencia artificial para pymes: Cómo automatizar procesos, ahorrar tiempo y ganar ventaja competitiva",
     excerpt: "Descubre cómo aplicar inteligencia artificial en tu pyme para automatizar tareas repetitivas, ahorrar tiempo y mejorar la productividad con herramientas prácticas y pasos claros.",
@@ -237,6 +354,7 @@ Sí, si se implementa bien. Nosotros te ayudamos en ese proceso, con sesiones de
 // Generate static params for static export
 export function generateStaticParams() {
   return [
+    { slug: 'automatizacion-marketing-inteligencia-artificial' },
     { slug: 'inteligencia-artificial-para-pymes' },
     { slug: 'reuniones-resumenes-automaticos-ia' }
   ]
