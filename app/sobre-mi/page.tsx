@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, Award, MapPin, GraduationCap, Briefcase, Code, Users, Target, TrendingUp, Trophy, LinkedinIcon, Mail, Phone } from "lucide-react"
+import { ArrowRight, Briefcase, Code, Users, Target, TrendingUp, Trophy, Mail, Phone } from "lucide-react"
 import { useRouter } from "next/navigation"
 import NavPill from "@/components/NavPill"
 import Footer from "@/components/Footer"
@@ -23,7 +23,7 @@ export default function SobreNosotros() {
                 <div className="w-40 h-40 rounded-2xl overflow-hidden border-4 border-brand-purple shadow-lg">
                   <img
                     src="/pablosmarcos.png"
-                    alt="Pablos y Marcos"
+                    alt="Marcos"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -32,7 +32,7 @@ export default function SobreNosotros() {
                 Sobre <span className="text-primary">Nosotros</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Somos Marcos y Pablos, dos especialistas apasionados por transformar empresas
+                Soy Marcos, especialista apasionado por transformar empresas
                 a través de la automatización e inteligencia artificial.
               </p>
             </div>
@@ -44,7 +44,7 @@ export default function SobreNosotros() {
         {/* Team Profiles Section */}
         <section className="py-20 bg-secondary">
           <div className="container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
+            <div className="flex justify-center max-w-xl mx-auto">
 
               {/* Marcos Profile */}
               <Card className="overflow-hidden h-full">
@@ -120,64 +120,6 @@ export default function SobreNosotros() {
                 </CardContent>
               </Card>
 
-              {/* Pablos Profile */}
-              <Card className="overflow-hidden h-full">
-                <CardContent className="p-8 h-full flex flex-col">
-                  <div className="text-center mb-6">
-                    <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 border-4 border-gradient-to-br from-blue-500 to-purple-600">
-                      <img
-                        src="/pablos.jpeg"
-                        alt="Pablos Tselioudis"
-                        className="w-full h-full object-cover"
-                        style={{ objectPosition: 'center 18%' }}
-                      />
-                    </div>
-                    <h2 className="text-2xl font-bold mb-2">Pablos Tselioudis Garmendia</h2>
-                    <p className="text-primary font-medium">AI Specialist and Web Developer</p>
-                    <p className="text-sm text-muted-foreground mb-4">Experto en desarrollo de Web, machine learning e implementación de IA</p>
-                  </div>
-
-                  <div className="space-y-4 mb-6 flex-grow">
-                    <div className="flex items-start gap-3">
-                      <GraduationCap className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-sm">Educación</p>
-                        <p className="text-sm text-muted-foreground">Data Science & Engineering - UC3M</p>
-                        <p className="text-sm text-muted-foreground">Master's in AI - VU Amsterdam</p>
-                        <p className="text-sm text-muted-foreground">Exchange - Northeastern University</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <Briefcase className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-sm">Experiencia</p>
-                        <p className="text-sm text-muted-foreground">AI Intern - Toyota Insurance</p>
-                        <p className="text-sm text-muted-foreground">ML Engineer - Motix Connected</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <Award className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-sm">Logros</p>
-                        <p className="text-sm text-muted-foreground">Beca de Excelencia Comunidad de Madrid</p>
-                        <p className="text-sm text-muted-foreground">Dean's List - Khoury College</p>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div className="flex gap-2 mt-auto">
-                    <a href="mailto:pablos@iaconsultora.net" className="w-full">
-                      <Button variant="outline" className="w-full text-sm">
-                        <Mail className="h-4 w-4 mr-2" />
-                        Email Pablos
-                      </Button>
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </section>

@@ -24,7 +24,7 @@ export default function AIConsultingLanding() {
                   <div className="w-full h-full rounded-2xl overflow-hidden">
                     <img
                       src="/pablosmarcos.png"
-                      alt="Pablos y Marcos"
+                      alt="Marcos"
                       className="w-full h-full object-cover"
                     />
                   </div>
